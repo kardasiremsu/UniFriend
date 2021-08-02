@@ -8,33 +8,33 @@ namespace UniFriend.Models
 {
     public class AddFriendPageModel
     {
-        public SelectList Faculties { get; set; }
+        public List<Faculty> Faculties { get; set; }
     }
 
     public class Faculty
     {
         public int ID { get; set; }
         public string name { get; set; }
-        public SelectList departments { get; set; }
+        public List<Department> departments { get; set; }
 }
 
     public class Department
     {
         public int ID { get; set; }
         public string name { get; set; }
-        public SelectList lectures { get; set; }
+        public List<Lecture> lectures { get; set; }
     }
     public class Lecture
     {
         public int ID { get; set; }
         public string name { get; set; }
-        public SelectList crns { get; set; }
+        public List<CRN> crns { get; set; }
     }
     public class CRN
     {
         public int ID { get; set; }
         public string code { get; set; }
-        public SelectList students { get; set; }
+        public List<Student> students { get; set; }
     }
 
     public class Student

@@ -8,8 +8,6 @@ using UniFriend.Models;
 namespace UniFriend.Controllers
 {
 
-    
-
     public class AddFriendController : Controller
     {
 
@@ -30,23 +28,22 @@ namespace UniFriend.Controllers
 
             List<CRN> oopcrns = new List<CRN>
             {
-                new CRN {ID = 1, code = "24654",students = new SelectList(oop24654students, "ID", "stud_name") },
-                new CRN {ID = 2, code = "24655", students = new SelectList(oop24655students, "ID", "stud_name") },
-                new CRN {ID = 3, code = "24656"},
+                new CRN {ID = 1, code = "24654",students = oop24654students},
+                new CRN {ID = 2, code = "24655", students = oop24655students},
+                new CRN {ID = 3, code = "24656", students = new List<Student>() },
             };
 
             List<CRN> dbcrns = new List<CRN>
             {
                 new CRN {ID = 1, code = "25654"},
                 new CRN {ID = 2, code = "25655"},
-                new CRN {ID = 3, code = "25656"},
             };
 
 
             List<Lecture> computerlectures = new List<Lecture>
             {
-                new Lecture {ID = 1, name ="Nesne Tabanlı Programlama",crns = new SelectList(oopcrns, "ID", "name")},
-                new Lecture {ID = 2, name ="Veri Yapıları",crns = new SelectList(dbcrns, "ID", "name")},
+                new Lecture {ID = 1, name ="Nesne Tabanlı Programlama",crns = oopcrns},
+                new Lecture {ID = 2, name ="Veri Yapıları",crns = dbcrns},
             };
 
             List<Lecture> electroniclectures = new List<Lecture>
@@ -57,8 +54,8 @@ namespace UniFriend.Controllers
 
             List<Department> engineering_departments = new List<Department>
             {
-                new Department {ID = 1, name = "Bilgisayar Mühendisliği", lectures = new SelectList(computerlectures, "ID", "name") },
-                new Department {ID = 2, name = "Elektrik Elektronik", lectures = new SelectList(electroniclectures, "ID", "name")}
+                new Department {ID = 1, name = "Bilgisayar Mühendisliği", lectures = computerlectures },
+                new Department {ID = 2, name = "Elektrik Elektronik", lectures = electroniclectures}
             };
 
 
@@ -70,11 +67,11 @@ namespace UniFriend.Controllers
 
             List<Faculty> faculties = new List<Faculty>
             {
-                new Faculty {ID = 1, name = "Mühendislik Fakültesi",departments = new SelectList(engineering_departments, "ID", "name")},
-                new Faculty {ID = 2, name = "Hukuk Fakültesi", departments = new SelectList(law_departments, "ID", "name")}
+                new Faculty {ID = 1, name = "Mühendislik Fakültesi",departments = engineering_departments },
+                new Faculty {ID = 2, name = "Hukuk Fakültesi", departments = law_departments }
             };
 
-            return new AddFriendPageModel() { Faculties = new SelectList(faculties, "ID", "name") };
+            return new AddFriendPageModel() { Faculties = faculties };
         }
 
 
@@ -86,13 +83,22 @@ namespace UniFriend.Controllers
         }
 
        public JsonResult GetDepartment(int facultyID) {
-          
-            var faculty = model.Faculties.ToList();
-            return Json(faculty[facultyID].JsonRequestBehavior.AllowGet);
-
-
+            return Json(model.Faculties[facultyID-1].departments);
        }
+       public JsonResult GetLecture(int facultyID, int departmentID)
+        {
+            return Json(model.Faculties[facultyID - 1].departments[departmentID-1].lectures);
+        }
 
-       
-    }
+        public JsonResult GetCRN(int facultyID, int departmentID, int LectureID)
+        {
+            return Json(model.Faculties[facultyID - 1].departments[departmentID - 1].lectures[LectureID-1].crns);
+        }
+
+        public JsonResult GetStudent(int facultyID, int departmentID, int LectureID, int CRNID)
+        {
+            return Json(model.Faculties[facultyID - 1].departments[departmentID - 1].lectures[LectureID-1].crns[CRNID-1].students);
+        }
+
+    }   
 }
