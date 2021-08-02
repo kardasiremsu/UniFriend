@@ -1,0 +1,35 @@
+﻿@model UniFriend.Models.AddFriendPageModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Find Your Friend</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/Dashboard/dashboard.js"></script>
+</head>
+<body>
+
+    <div style="box-sizing: border-box; display: flex;flex-direction: column; align-items:center; justify-content: center">
+        <div>
+            <h2>Welcome User!</h2>
+        </div>
+        <div style="margin-top: 35px">
+            @Html.DropDownList("FacultyForm", Model.Faculties, "-Select Faculty", new { @class = "form-select", @style = "width: 400px", @id = "facultyList" })
+        </div>
+        <div style="margin-top: 35px">
+            <select class="form-select" id="studentDepartmentList" style="width: 400px">
+            </select>
+        </div>
+    </div>
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
