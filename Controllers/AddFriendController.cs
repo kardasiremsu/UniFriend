@@ -99,6 +99,7 @@ namespace UniFriend.Controllers
         {
             return Json(model.Faculties[facultyID - 1].departments[departmentID - 1].lectures[LectureID-1].crns[CRNID-1].students);
         }
+     
 
     }   
 }
