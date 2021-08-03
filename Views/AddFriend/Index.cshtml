@@ -22,7 +22,8 @@
             <h2>Welcome User!</h2>
         </div>
         <div style="margin-top: 35px">
-            @Html.DropDownList("FacultyForm", new SelectList(Model.Faculties, "ID", "Name"), "-Select Faculty", new { @class = "form-select", @style = "width: 400px", @id = "facultyList" })
+            <select class="form-select" id="studentFacultyList" style="display: block; width: 400px">
+            </select>
         </div>
         <div style="margin-top: 35px">
             <select class="form-select" id="studentDepartmentList" style="display: none; width: 400px">

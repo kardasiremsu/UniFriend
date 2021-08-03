@@ -7,8 +7,7 @@ namespace UniFriend.Models
 {
     public class ClubsPageModel
     {
-       public List<Club> clubs { get; set; }
-
+       public List<int> clubs { get; set; }
     }
 
     public class Club

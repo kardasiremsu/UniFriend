@@ -1,8 +1,34 @@
 ﻿$(document).ready(function () {
 
-    $('#facultyList').on("change", function () {
 
-        var facultyID = $('#facultyList').val();
+        $.ajax({
+            url: '/AddFriend/GetFaculty',
+            type: 'post',
+            success: function (data) {
+                if (data.length != 0) {
+
+                    var s = '<option value="-1">Select Faculty</option>';
+                    for (var i = 0; i < data.length; i++) {
+
+                        s += '<option value="' + data[i].ID + '">' + data[i].name + '</option>'
+                        $('#studentFacultyList').html(s);
+                    }
+                    }
+                else {
+                    $('#studentFacultyList').empty();
+                    var s = '<option value="-1">Select Faculty</option>';
+                    $('#studentFacultyList').html(s);
+                }
+            }
+        });
+
+
+
+
+
+    $('#studentFacultyList').on("change", function () {
+
+        var facultyID = $('#studentFacultyList').val();
 
         $.ajax({
             url: '/AddFriend/GetDepartment',
@@ -33,13 +59,11 @@
     })
 
     $('#studentDepartmentList').on("change", function () {
-        var facultyID = $('#facultyList').val();
         var departmentID = $('#studentDepartmentList').val();
         $.ajax({
             url: '/AddFriend/GetLecture',
             type: 'post',
             data: {
-                facultyID,
                 departmentID
             },
             dataType: 'json',
@@ -65,15 +89,12 @@
     })
 
     $('#studentLectureList').on("change", function () {
-        var facultyID = $('#facultyList').val();
-        var departmentID = $('#studentDepartmentList').val();
+ 
         var lectureID = $('#studentLectureList').val();
         $.ajax({
             url: '/AddFriend/GetCRN',
             type: 'post',
             data: {
-                facultyID,
-                departmentID,
                 lectureID
             },
             dataType: 'json',
@@ -99,17 +120,11 @@
     })
 
     $('#studentCRNList').on("change", function () {
-        var facultyID = $('#facultyList').val();
-        var departmentID = $('#studentDepartmentList').val();
-        var lectureID = $('#studentLectureList').val();
         var CRNID = $('#studentCRNList').val();
         $.ajax({
             url: '/AddFriend/GetStudent',
             type: 'post',
             data: {
-                facultyID,
-                departmentID,
-                lectureID,
                 CRNID
             },
             dataType: 'json',

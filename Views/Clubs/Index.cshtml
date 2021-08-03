@@ -22,11 +22,14 @@
             <h2>Welcome User!</h2>
         </div>
         <div style="margin-top: 35px">
-            @Html.DropDownList("ClubForm", new SelectList(Model.clubs, "ID", "Name"), "-Select Club", new { @class = "form-select", @style = "width: 400px", @id = "ClubList" })
+            <div style="margin-top: 35px">
+                <select class="form-select" id="ClubList" style="display: block; width: 400px">
+                </select>
+            </div>
         </div>
        
         <div style="margin-top: 35px">
-            <select class="form-select" id="studentList" style="display: none; width: 400px">
+            <select class="form-select" id="clubStudents" style="display: none; width: 400px">
             </select>
         </div>
         <div style="margin-top: 35px">
