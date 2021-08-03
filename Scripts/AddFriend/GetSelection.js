@@ -134,6 +134,38 @@
         });
     })
 
+    $('#studentList').on("change",
+        function () {
+        $('#AddButton').css("display", "block");
+    });
 
+    $('#AddButton').click(function() {
+        var StudentID = $('#studentList').val();
+        $.ajax({
+            url: '/AddFriend/AddFriend',
+            type: 'post',
+            data: {     
+                StudentID
+            },
+            dataType: 'bool',
+            success: function (data) {
+                if (data) {
+
+                    var s = "You Have A New Friend";
+                    
+                    $('#addmessage').css("display", "block");
+                    $('#addmessage').html(s);
+
+                    
+                }
+                else {
+                    var s = "Couldn't Added";
+
+                    $('#addmessage').css("display", "block");
+                    $('#addmessage').html(s);
+                }
+            }
+        });
+    })
 
 });

@@ -1,9 +1,9 @@
-﻿@model UniFriend.Models.AddFriendPageModel
+﻿@model UniFriend.Models.ClubsPageModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clubs";
 }
 
-<h2>Find Your Friend</h2>
+<h2>Find Your Club Friends</h2>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/AddFriend/GetSelection.js"></script>
+    <script src="~/Scripts/Clubs/GetClubs.js"></script>
 </head>
 <body>
 
@@ -22,22 +22,9 @@
             <h2>Welcome User!</h2>
         </div>
         <div style="margin-top: 35px">
-            @Html.DropDownList("FacultyForm", new SelectList(Model.Faculties, "ID", "Name"), "-Select Faculty", new { @class = "form-select", @style = "width: 400px", @id = "facultyList" })
+            @Html.DropDownList("ClubForm", new SelectList(Model.clubs, "ID", "Name"), "-Select Club", new { @class = "form-select", @style = "width: 400px", @id = "ClubList" })
         </div>
-        <div style="margin-top: 35px">
-            <select class="form-select" id="studentDepartmentList" style="display: none; width: 400px">
-            </select>
-        </div>
-        <div style="margin-top: 35px">
-            <select class="form-select" id="studentLectureList" style="display: none; width: 400px">
-            </select>
-        </div>
-
-        <div style="margin-top: 35px">
-            <select class="form-select" id="studentCRNList" style="display: none; width: 400px">
-            </select>
-        </div>
-
+       
         <div style="margin-top: 35px">
             <select class="form-select" id="studentList" style="display: none; width: 400px">
             </select>
@@ -48,13 +35,10 @@
         </div>
         <div style="margin-top: 35px">
             <p id="addmessage" style="display: block; width: 400px">
-               Selam Burası Dolu!
+                Arkadaş Ekledin!
             </p>
 
         </div>
-
-
-
 
     </div>
     <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
