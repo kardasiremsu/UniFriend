@@ -11,6 +11,8 @@ namespace UniFriend.Models
         public string stud_name { get; set; }
         public string stud_number { get; set; }
         public char stud_gender { get; set; }
+        public string mail { get; set; }
+        public string password { get; set; }
         public List<Faculty> faculty { get; set; }
         public List<Department> department { get; set; }
         public List<Lecture> lecture { get; set; }

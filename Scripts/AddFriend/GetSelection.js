@@ -1,6 +1,4 @@
 ﻿$(document).ready(function () {
-
-
         $.ajax({
             url: '/AddFriend/GetFaculty',
             type: 'post',
@@ -21,9 +19,6 @@
                 }
             }
         });
-
-
-
 
 
     $('#studentFacultyList').on("change", function () {
@@ -162,25 +157,21 @@
             data: {     
                 StudentID
             },
-            dataType: 'bool',
+            dataType: 'boolean',
             success: function (data) {
-                if (data) {
-
+                if (data == true) {
+                    $('#addmessage').css("display", "block");
                     var s = "You Have A New Friend";
-                    
-                    $('#addmessage').css("display", "block");
                     $('#addmessage').html(s);
-
-                    
                 }
-                else {
-                    var s = "Couldn't Added";
-
+                else { 
                     $('#addmessage').css("display", "block");
+                    var s = "Couldn't Added";
                     $('#addmessage').html(s);
                 }
             }
         });
     })
+
 
 });
