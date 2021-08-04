@@ -13,10 +13,10 @@ namespace UniFriend.Models
         public char stud_gender { get; set; }
         public string mail { get; set; }
         public string password { get; set; }
-        public List<Faculty> faculty { get; set; }
-        public List<Department> department { get; set; }
-        public List<Lecture> lecture { get; set; }
-        public List<CRN> crn { get; set; }
+        public List<int> faculty { get; set; }
+        public List<int> department { get; set; }
+        public List<int> lecture { get; set; }
+        public List<int> crn { get; set; }
         public List<int> friends { get; set; }
     }
 }
