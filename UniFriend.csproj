@@ -173,6 +173,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\AddFriend\Index.cshtml" />
     <Content Include="Views\Clubs\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

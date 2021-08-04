@@ -157,7 +157,7 @@
             data: {     
                 StudentID
             },
-            dataType: 'boolean',
+            dataType: 'json',
             success: function (data) {
                 if (data == true) {
                     $('#addmessage').css("display", "block");

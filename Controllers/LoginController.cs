@@ -17,9 +17,10 @@ namespace UniFriend.Controllers
 
         public JsonResult LoginCheck(string mail, string password )
         {
-            if(mail == "a@a.com" && password == "a")
+            Student student = Data.students.Find(c => (c.mail == mail) && (c.password == password));
+            if (student != null)
             {
-                return Json(Url.Action("Index", "Home"));
+                return Json(Url.Action("Index", "AddFriend", new  { id = student.ID}));
             }
             else
             {

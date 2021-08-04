@@ -8,6 +8,7 @@ namespace UniFriend.Models
 {
     public class AddFriendPageModel
     {
+        public int userid { get; set; }
         public List<int> faculties { get; set; }
     }
 

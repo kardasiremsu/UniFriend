@@ -11,8 +11,9 @@ namespace UniFriend.Controllers
     public class AddFriendController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            Data.model.userid = id;
             return View(Data.model);
         }
 
@@ -63,9 +64,11 @@ namespace UniFriend.Controllers
             return Json(students);
         }
 
-          public bool AddFriend(int StudentID)
+          public JsonResult AddFriend(int StudentID)
           {
-              return true;
+            Student user = Data.students[Data.model.userid];
+            user.friends.Add(StudentID);
+            return Json(true);
           }
       
     }   

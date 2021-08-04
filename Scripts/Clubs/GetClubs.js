@@ -51,4 +51,31 @@
             }
         });
     })
+
+
+
+    $('#AddButton').click(function () {
+        var clubID = $('#clubStudents').val();
+        $.ajax({
+            url: '/Clubs/AddFriend',
+            type: 'post',
+            data: {
+                clubID
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data == true) {
+                    $('#ClubsMessage').css("display", "block");
+                    var s = "You Have A New Friend";
+                    $('#ClubsMessage').html(s);
+                }
+                else {
+                    $('#ClubsMessage').css("display", "block");
+                    var s = "Couldn't Added";
+                    $('#ClubsMessage').html(s);
+                }
+            }
+        });
+    })
+
 });

@@ -31,6 +31,9 @@ namespace UniFriend.Controllers
         {
             return Json(Data.clubs);
         }
-
+        public JsonResult AddFriend()
+        {
+            return Json(true);
+        }
     } 
 }

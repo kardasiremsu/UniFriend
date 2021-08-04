@@ -22,9 +22,10 @@ namespace UniFriend.Models.Entities
             return new ClubsPageModel { clubs = new List<int> { 0, 1,2,3 } };
         }
 
-        public static AddFriendPageModel GetModel()
+        public static AddFriendPageModel GetModel(int ID = -1)
         {
-            return new AddFriendPageModel { faculties = new List<int> {0,1}};
+
+            return new AddFriendPageModel { userid = ID, faculties = new List<int> {0,1}};
         }
 
         public static List<CRN> GetCRNs()
@@ -72,17 +73,17 @@ namespace UniFriend.Models.Entities
         {
              return new List<Student>
              {
-                new Student {ID = 0, stud_name = "Beyza", stud_gender = 'K', stud_number = "12100"},
-                new Student {ID = 1, stud_name = "İremsu", stud_gender = 'K', stud_number = "12000"},
-                new Student {ID = 2, stud_name = "Sinan", stud_gender = 'E', stud_number = "12001"},
-                new Student {ID = 3, stud_name = "Buğra", stud_gender = 'E', stud_number = "12002"},
-                new Student {ID = 4, stud_name = "Mehmet", stud_gender = 'E', stud_number = "12003"},
-                new Student {ID = 5, stud_name = "Buket", stud_gender = 'K', stud_number = "12004"},
-                new Student {ID = 6, stud_name = "Murat", stud_gender = 'E', stud_number = "12005"},
-                new Student {ID = 7, stud_name = "İlayda", stud_gender = 'K', stud_number = "12006"},
-                new Student {ID = 8, stud_name = "Can", stud_gender = 'E', stud_number = "12007"},
-                new Student {ID = 9, stud_name = "Burcu", stud_gender = 'K', stud_number = "12008"},
-                new Student {ID = 10, stud_name = "Burak", stud_gender = 'E', stud_number = "12009"},
+                new Student {ID = 0, stud_name = "Beyza", stud_gender = 'K', stud_number = "12100", mail = "0@a.com" , password = "a"},
+                new Student {ID = 1, stud_name = "İremsu", stud_gender = 'K', stud_number = "12000", mail = "1@a.com" , password = "a"},
+                new Student {ID = 2, stud_name = "Sinan", stud_gender = 'E', stud_number = "12001", mail = "2@a.com" , password = "a"},
+                new Student {ID = 3, stud_name = "Buğra", stud_gender = 'E', stud_number = "12002", mail = "3@a.com" , password = "a"},
+                new Student {ID = 4, stud_name = "Mehmet", stud_gender = 'E', stud_number = "12003", mail = "4@a.com" , password = "a"},
+                new Student {ID = 5, stud_name = "Buket", stud_gender = 'K', stud_number = "12004", mail = "5@a.com" , password = "a"},
+                new Student {ID = 6, stud_name = "Murat", stud_gender = 'E', stud_number = "12005", mail = "6@a.com" , password = "a"},
+                new Student {ID = 7, stud_name = "İlayda", stud_gender = 'K', stud_number = "12006", mail = "7@a.com" , password = "a"},
+                new Student {ID = 8, stud_name = "Can", stud_gender = 'E', stud_number = "12007", mail = "8@a.com" , password = "a"},
+                new Student {ID = 9, stud_name = "Burcu", stud_gender = 'K', stud_number = "12008", mail = "9@a.com" , password = "a"},
+                new Student {ID = 10, stud_name = "Burak", stud_gender = 'E', stud_number = "12009", mail = "10@a.com" , password = "a"},
             };
             
         }
