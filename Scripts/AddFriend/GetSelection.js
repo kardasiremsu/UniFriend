@@ -1,29 +1,68 @@
 ﻿$(document).ready(function () {
-        $.ajax({
-            url: '/AddFriend/GetFaculty',
-            type: 'post',
-            success: function (data) {
-                if (data.length != 0) {
-
-                    var s = '<option value="-1">Select Faculty</option>';
-                    for (var i = 0; i < data.length; i++) {
-
-                        s += '<option value="' + data[i].ID + '">' + data[i].name + '</option>'
-                        $('#studentFacultyList').html(s);
-                    }
-                    }
-                else {
-                    $('#studentFacultyList').empty();
-                    var s = '<option value="-1">Select Faculty</option>';
-                    $('#studentFacultyList').html(s);
+    $.ajax({
+        url: '/AddFriend/GetCategories',
+        type: 'post',
+        success: function (data) {
+            if (data.length != 0) {
+                var s = '<option value="-1">Select Category</option>';
+                for (var i = 0; i < data.length; i++) {
+                    s += '<option value="' + data[i].Key + '">' + data[i].Value + '</option>'
+                    $('#selectionFor').html(s);
                 }
             }
-        });
+            else {
+                $('#selectionFor').empty();
+                var s = '<option value="-1">Select Category</option>';
+                $('#selectionFor').html(s);
+            }
+        }
+    });
+
+    $('#selectionFor').on("change", function () {
+        var selectionID = $('#selectionFor').val();
+
+        $('#ClubList').css("display", "none");
+        $('#studentDepartmentList').css("display", "none");
+        $('#studentCRNList').css("display", "none");
+        $('#studentLectureList').css("display", "none");
+        $('#studentFacultyList').css("display", "none");
+
+        if (selectionID == 0) {
+            $('#studentFacultyList').css("display", "block");
+
+            $.ajax({
+                url: '/AddFriend/GetFaculty',
+                type: 'post',
+                success: function (data) {
+                    if (data.length != 0) {
+
+                        var s = '<option value="-1">Select Faculty</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            s += '<option value="' + data[i].ID + '">' + data[i].name + '</option>';
+                        }
+
+                        $('#studentFacultyList').html(s);
+                    } else {
+                        $('#studentFacultyList').empty();
+                        var s = '<option value="-1">Select Faculty</option>';
+                        $('#studentFacultyList').html(s);
+                    }
+                }
+            });
+        } else {
+            $('#ClubList').css("display", "block");
+            alert('club');
+        }
+    });
 
 
     $('#studentFacultyList').on("change", function () {
 
         var facultyID = $('#studentFacultyList').val();
+
+        $('#ClubList').css("display", "none");
+        $('#studentDepartmentList').css("display", "none");
+        $('#studentCRNList').css("display", "none");
 
         $.ajax({
             url: '/AddFriend/GetDepartment',
@@ -42,7 +81,7 @@
                     }
                     $('#studentDepartmentList').css("display", "block");
                     $('#studentDepartmentList').html(s);
-                    
+
                 }
                 else {
                     $('#studentDepartmentList').empty();
@@ -55,6 +94,9 @@
 
     $('#studentDepartmentList').on("change", function () {
         var departmentID = $('#studentDepartmentList').val();
+
+        $('#ClubList').css("display", "none");
+
         $.ajax({
             url: '/AddFriend/GetLecture',
             type: 'post',
@@ -84,7 +126,7 @@
     })
 
     $('#studentLectureList').on("change", function () {
- 
+
         var lectureID = $('#studentLectureList').val();
         $.ajax({
             url: '/AddFriend/GetCRN',
@@ -146,15 +188,15 @@
 
     $('#studentList').on("change",
         function () {
-        $('#AddButton').css("display", "block");
-    });
+            $('#AddButton').css("display", "block");
+        });
 
-    $('#AddButton').click(function() {
+    $('#AddButton').click(function () {
         var StudentID = $('#studentList').val();
         $.ajax({
             url: '/AddFriend/AddFriend',
             type: 'post',
-            data: {     
+            data: {
                 StudentID
             },
             dataType: 'json',
@@ -164,7 +206,7 @@
                     var s = "You Have A New Friend";
                     $('#addmessage').html(s);
                 }
-                else { 
+                else {
                     $('#addmessage').css("display", "block");
                     var s = "Couldn't Added";
                     $('#addmessage').html(s);

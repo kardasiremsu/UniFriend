@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace UniFriend.Models.Entities
-{
-    public class Data
-    {
+namespace UniFriend.Models.Entities {
+    public class Data {
         public static List<Student> students = GetStudents();
         public static List<CRN> CRNs = GetCRNs();
         public static List<Lecture> lectures = GetLectures();
@@ -17,19 +15,16 @@ namespace UniFriend.Models.Entities
         public static ClubsPageModel clubmodel = GetClubModel();
 
 
-        public static ClubsPageModel GetClubModel()
-        {
-            return new ClubsPageModel { clubs = new List<int> { 0, 1,2,3 } };
+        public static ClubsPageModel GetClubModel() {
+            return new ClubsPageModel { clubs = new List<int> { 0, 1, 2, 3 } };
         }
 
-        public static AddFriendPageModel GetModel(int ID = -1)
-        {
+        public static AddFriendPageModel GetModel(int ID = -1) {
 
-            return new AddFriendPageModel { userid = ID, faculties = new List<int> {0,1}};
+            return new AddFriendPageModel { userid = ID, faculties = new List<int> { 0, 1 } };
         }
 
-        public static List<CRN> GetCRNs()
-        {
+        public static List<CRN> GetCRNs() {
             return new List<CRN>
             {
                 new CRN {ID = 0, code = "24600",students = new List<int> { 0, 1, 2 }},
@@ -41,8 +36,7 @@ namespace UniFriend.Models.Entities
             };
         }
 
-        public static List<Lecture> GetLectures()
-        {
+        public static List<Lecture> GetLectures() {
             return new List<Lecture>
             {
                 new Lecture{ID = 0, name = "OOP",crns= new List<int> {0,1} },
@@ -52,8 +46,7 @@ namespace UniFriend.Models.Entities
             };
         }
 
-        public static List<Department> GetDepartments()
-        {
+        public static List<Department> GetDepartments() {
             return new List<Department>
             {
                 new Department{ID = 0, name = "Bilgisayar Mühendisliği",lectures= new List<int> {0,1} },
@@ -62,17 +55,16 @@ namespace UniFriend.Models.Entities
             };
         }
 
-        public static List<Faculty> GetFaculties()
-        { return new List<Faculty> {
+        public static List<Faculty> GetFaculties() {
+            return new List<Faculty> {
             new Faculty { ID = 0, name = "Mühendislik Fakültesi", departments = new List<int> { 0, 1 } },
-            new Faculty { ID = 1, name = "Hukuk Fakültesi", departments = new List<int> { 2 } }
-        }; }
+            new Faculty { ID = 1, name = "Hukuk Fakültesi", departments = new List<int> { 2 } }};
+        }
 
 
-        public static List<Student> GetStudents()
-        {
-             return new List<Student>
-             {
+        public static List<Student> GetStudents() {
+            return new List<Student>
+            {
                 new Student {ID = 0, stud_name = "Beyza", stud_gender = 'K', stud_number = "12100", mail = "0@a.com" , password = "a"},
                 new Student {ID = 1, stud_name = "İremsu", stud_gender = 'K', stud_number = "12000", mail = "1@a.com" , password = "a", friends=new List<int>{0,2}, faculty = new List <int> {0}, department = new List<int> {0,1}  },
                 new Student {ID = 2, stud_name = "Sinan", stud_gender = 'E', stud_number = "12001", mail = "2@a.com" , password = "a", friends=new List<int>{0,2}, faculty = new List <int> {0}, department = new List<int> {0,1} },
@@ -85,13 +77,10 @@ namespace UniFriend.Models.Entities
                 new Student {ID = 9, stud_name = "Burcu", stud_gender = 'K', stud_number = "12008", mail = "9@a.com" , password = "a"},
                 new Student {ID = 10, stud_name = "Burak", stud_gender = 'E', stud_number = "12009", mail = "10@a.com" , password = "a"},
             };
-            
+
         }
 
-
-
-        public static List<Club> GetClubs()
-        {
+        public static List<Club> GetClubs() {
             return new List<Club>
             {
                 new Club {ID = 0, name = "IEEE", students = new List<int> { 0,1,2 } },
