@@ -6,46 +6,33 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/Content/Layout.css")
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("UniFriend", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Network", "Index", "AddFriend")</li>
+                    <li>@Html.ActionLink("Clubs", "Index", "Clubs")</li>
+                    <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" style="float:right;margin:5px">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <li id="home_index" style="color:pink">@Html.ActionLink("Home", "Index", "Home")</li>
-                <a class="nav-link" href="~/C">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </div>
         </div>
-    </nav>
 
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -59,11 +46,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li id="home_index" style="color:pink">@Html.ActionLink("Home", "Index", "Home")</li>
-        <li id="add_friend">@Html.ActionLink("AddFriend", "Index", "AddFriend")</li>
-        <li id="club_index">@Html.ActionLink("Clubs", "Index", "Clubs")</li>
-        <li id="profile_index">@Html.ActionLink("Profile", "Index", "Profile")</li>
-    </ul>
-</div>
