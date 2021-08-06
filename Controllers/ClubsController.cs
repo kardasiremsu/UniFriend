@@ -12,7 +12,7 @@ namespace UniFriend.Controllers
     {
         public ActionResult Index()
         {
-            return View(Data.clubmodel);
+            return View(Data.model);
         }
 
 

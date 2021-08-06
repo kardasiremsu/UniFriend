@@ -8,76 +8,75 @@
     <title>Network</title>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/AddFriend/GetSelection.js"></script>
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            * {
-                box-sizing: border-box;
-            }
 
-            .menu {
-                width: 25%;
-                float: left;
-                padding: 15px;
-                border: 1px solid #808080;
-            }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-            .main {
-                width: 75%;
-                float: left;
-                padding: 15px;
-                border: 1px solid #808080;
-            }
-        </style>
-    </head>
-    <body>
+        .menu {
+            width: 25%;
+            float: left;
+            padding: 15px;
+            border: 1px solid #808080;
+        }
+
+        .main {
+            width: 75%;
+            float: left;
+            padding: 15px;
+            border: 1px solid #808080;
+        }
+    </style>
+</head>
+<body>
 
 
-        <div class="menu">
-            <div>
-                <h2>Find Your Friend</h2>
-            </div>
-
-            <div style="margin-top: 15px">
-                <select class="form-select" id="selectionFor" style="display: block;"></select>
-            </div>
-
-            <div style="margin-top: 15px">
-                <select class="form-select" id="studentFacultyList" style="display: none;"></select>
-            </div>
-
-            <div style="margin-top: 15px ">
-                <select class="form-select" id="studentDepartmentList" style="display: none; "></select>
-            </div>
-
-            <div style="margin-top: 15px ">
-                <select class="form-select" id="studentLectureList" style="display: none; "></select>
-            </div>
-
-            <div style="margin-top: 15px ">
-                <select class="form-select" id="studentCRNList" style="display: none;"></select>
-            </div>
-
-            <hr />
-            <div style="margin-top: 15px">
-                <div style="margin-top: 15px ">
-                    <select class="form-select" id="ClubList" style="display: none; "></select>
-                </div>
-            </div>
-
-            <div style="margin-top: 15px ">
-                <button type="button" class="btn btn-outline-primary" id="AddButton" style="display: block; ">Find Your Friends</button>
-            </div>
-        </div>
- 
-        <div class="main">
-
-            <select class="form-select" style="display: none;"></select>
-            <p>Öğrenci Listesi</p>
+    <div class="menu">
+        <div>
+            <h2>Find Your Friend</h2>
         </div>
 
-    </body>
- 
-        <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+        <div style="margin-top: 15px">
+            <select class="form-select" id="selectionFor" style="display: block;"></select>
+        </div>
 
-     
+        <div style="margin-top: 15px">
+            <select class="form-select" id="studentFacultyList" style="display: none;"></select>
+        </div>
+
+        <div style="margin-top: 15px ">
+            <select class="form-select" id="studentDepartmentList" style="display: none; "></select>
+        </div>
+
+        <div style="margin-top: 15px ">
+            <select class="form-select" id="studentLectureList" style="display: none; "></select>
+        </div>
+
+        <div style="margin-top: 15px ">
+            <select class="form-select" id="studentCRNList" style="display: none;"></select>
+        </div>
+
+        <div style="margin-top: 15px ">
+            <select class="form-select" id="ClubList" style="display: none; "></select>
+        </div>
+
+        <hr />
+
+        <div style="margin-top: 15px ">
+            <button type="button" class="btn btn-outline-primary" id="AddButton" style="display: block; ">Find Your Friends</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <div style="margin-top: 15px ">
+            <div id="studentList" style="display: none;"></div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+
+

@@ -12,15 +12,9 @@ namespace UniFriend.Models.Entities {
         public static List<Faculty> faculties = GetFaculties();
         public static AddFriendPageModel model = GetModel();
         public static List<Club> clubs = GetClubs();
-        public static ClubsPageModel clubmodel = GetClubModel();
-
-
-        public static ClubsPageModel GetClubModel() {
-            return new ClubsPageModel { clubs = new List<int> { 0, 1, 2, 3 } };
-        }
+        
 
         public static AddFriendPageModel GetModel(int ID = -1) {
-
             return new AddFriendPageModel { userid = ID, faculties = new List<int> { 0, 1 } };
         }
 

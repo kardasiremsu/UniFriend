@@ -58,11 +58,23 @@ namespace UniFriend.Controllers {
             return Json(students);
         }
 
+        public JsonResult GetClubStudent(int clubID) {
+            List<Student> students = new List<Student>();
+
+            foreach(int studentID in Data.clubs[clubID].students) {
+                students.Add(Data.students[studentID]);
+            }
+            return Json(students);
+        }
+
         public JsonResult AddFriend(int StudentID) {
             Student user = Data.students[Data.model.userid];
             user.friends.Add(StudentID);
             return Json(true);
         }
 
+        public JsonResult GetClubs() {
+            return Json(Data.clubs);
+        }
     }
 }

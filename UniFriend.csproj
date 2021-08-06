@@ -129,7 +129,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddFriendPageModel.cs" />
-    <Compile Include="Models\ClubsPageModel.cs" />
     <Compile Include="Models\Entities\Data.cs" />
     <Compile Include="Models\ProfilePageModel.cs" />
     <Compile Include="Models\Student.cs" />

@@ -49,9 +49,28 @@
                     }
                 }
             });
-        } else {
+        } else if (selectionID == 1) {
             $('#ClubList').css("display", "block");
-            alert('club');
+
+            $.ajax({
+                url: '/AddFriend/GetClubs',
+                type: 'post',
+                success: function (data) {
+                    if (data.length != 0) {
+
+                        var s = '<option value="-1">Select Club</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            s += '<option value="' + data[i].ID + '">' + data[i].name + '</option>';
+                        }
+
+                        $('#ClubList').html(s);
+                    } else {
+                        $('#ClubList').empty();
+                        var s = '<option value="-1">Select Club</option>';
+                        $('#ClubList').html(s);
+                    }
+                }
+            });
         }
     });
 
@@ -61,7 +80,9 @@
         var facultyID = $('#studentFacultyList').val();
 
         $('#ClubList').css("display", "none");
+
         $('#studentDepartmentList').css("display", "none");
+        $('#studentLectureList').css("display", "none");
         $('#studentCRNList').css("display", "none");
 
         $.ajax({
@@ -97,6 +118,9 @@
 
         $('#ClubList').css("display", "none");
 
+        $('#studentLectureList').css("display", "none");
+        $('#studentCRNList').css("display", "none");
+
         $.ajax({
             url: '/AddFriend/GetLecture',
             type: 'post',
@@ -128,6 +152,11 @@
     $('#studentLectureList').on("change", function () {
 
         var lectureID = $('#studentLectureList').val();
+
+        $('#ClubList').css("display", "none");
+
+        $('#studentCRNList').css("display", "none");
+
         $.ajax({
             url: '/AddFriend/GetCRN',
             type: 'post',
@@ -158,6 +187,7 @@
 
     $('#studentCRNList').on("change", function () {
         var CRNID = $('#studentCRNList').val();
+
         $.ajax({
             url: '/AddFriend/GetStudent',
             type: 'post',
@@ -186,7 +216,40 @@
         });
     })
 
-    $('#studentList').on("change",
+    $('#ClubList').on("change", function () {
+        var clubID = $('#ClubList').val();
+
+        $.ajax({
+            url: '/AddFriend/GetClubStudent',
+            type: 'post',
+            data: {
+                clubID
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.length != 0) {
+                    var s = "";
+                    for (var i = 0; i < data.length; i++) {
+                        s += '<div class="card" style="width: 18rem;">';
+                        s += '<img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap">';
+                        s += '<div class="card-body">';
+                        s += '<p class="card-text" id=' + data[i].ID + '>' + data[i].stud_name + '</p >';
+                        s += "</div></div >";
+                    }
+                    $('#studentList').css("display", "block");
+                    $('#studentList').html(s);
+                }
+                else {
+                    $('#studentList').empty();
+                    var s = '<option value="-1">Select Student</option>';
+                    $('#studentList').html(s);
+                }
+            }
+        });
+    })
+
+
+    /*$('#studentList').on("change",
         function () {
             $('#AddButton').css("display", "block");
         });
@@ -213,7 +276,5 @@
                 }
             }
         });
-    })
-
-
+    })*/
 });
