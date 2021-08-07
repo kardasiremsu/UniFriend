@@ -67,9 +67,9 @@ namespace UniFriend.Controllers {
             return Json(students);
         }
 
-        public JsonResult AddFriend(int StudentID) {
+        public JsonResult AddFriend(int ID) {
             Student user = Data.students[Data.model.userid];
-            user.friends.Add(StudentID);
+            user.friends.Add(ID);
             return Json(true);
         }
 
