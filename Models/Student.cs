@@ -18,5 +18,6 @@ namespace UniFriend.Models
         public List<int> lecture { get; set; }
         public List<int> crn { get; set; }
         public List<int> friends { get; set; }
+        public List<int> club { get; set; }
     }
 }

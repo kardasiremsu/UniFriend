@@ -60,7 +60,7 @@ namespace UniFriend.Models.Entities {
             return new List<Student>
             {
                 new Student {ID = 0, stud_name = "Beyza", stud_gender = 'K', stud_number = "12100", mail = "0@a.com" , password = "a"},
-                new Student {ID = 1, stud_name = "İremsu", stud_gender = 'K', stud_number = "12000", mail = "1@a.com" , password = "a", friends=new List<int>{0,2}, faculty = new List <int> {0}, department = new List<int> {0,1}  },
+                new Student {ID = 1, stud_name = "İremsu", stud_gender = 'K', stud_number = "12000", mail = "1@a.com" , password = "a", friends=new List<int>{0,2}, faculty = new List <int> {0}, department = new List<int> {0,1}, club = new List<int> {0,1,2} },
                 new Student {ID = 2, stud_name = "Sinan", stud_gender = 'E', stud_number = "12001", mail = "2@a.com" , password = "a", friends=new List<int>{0,2}, faculty = new List <int> {0}, department = new List<int> {0,1} },
                 new Student {ID = 3, stud_name = "Buğra", stud_gender = 'E', stud_number = "12002", mail = "3@a.com" , password = "a"},
                 new Student {ID = 4, stud_name = "Mehmet", stud_gender = 'E', stud_number = "12003", mail = "4@a.com" , password = "a"},

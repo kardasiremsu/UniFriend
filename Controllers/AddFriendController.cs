@@ -7,10 +7,29 @@ using UniFriend.Models;
 using UniFriend.Models.Entities;
 namespace UniFriend.Controllers {
 
+
+
     public class AddFriendController : Controller {
 
+        public LayoutViewModel LayoutModel { get; set; }
+        public AddFriendController()
+        {
+            this.LayoutModel = new LayoutViewModel();//has property PageTitle
+
+        }
         public ActionResult Index(int id) {
             Data.model.userid = id;
+            List<Club> clubs = new List<Club>();
+            
+            //Adding clubs to dictionary
+            foreach (int clubid in Data.students[id].club)
+            {
+                clubs.Add(Data.clubs[clubid]);
+            }
+            
+            LayoutModel.Clubs = clubs;
+            this.ViewData["LayoutViewModel"] = this.LayoutModel;
+            Session["LayoutModel"] = LayoutModel;
             return View(Data.model);
         }
 

@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Models\AddFriendPageModel.cs" />
     <Compile Include="Models\Entities\Data.cs" />
+    <Compile Include="Models\LayoutViewModel.cs" />
     <Compile Include="Models\ProfilePageModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +140,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HomePage.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\Network.css" />
     <Content Include="favicon.ico" />
