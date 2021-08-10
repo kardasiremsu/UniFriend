@@ -6,40 +6,38 @@ using System.Web.Mvc;
 using UniFriend.Models;
 using UniFriend.Models.Entities;
 
-namespace UniFriend.Controllers
-{
-    public class HomeController : Controller
-    {
+namespace UniFriend.Controllers {
+    public class HomeController : Controller {
         public LayoutViewModel LayoutModel { get; set; }
-        
-        public HomeController()
-        {
+
+        public HomeController() {
             this.LayoutModel = new LayoutViewModel();
         }
 
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             int ID = (int)Session["ID"];
             List<Club> clubs = new List<Club>();
 
             //Adding clubs to dictionary
-            foreach (int clubid in Data.students[ID].club)
-            {
+            foreach(int clubid in Data.students[ID].club) {
                 clubs.Add(Data.clubs[clubid]);
             }
 
             LayoutModel.Clubs = clubs;
             ViewData["LayoutViewModel"] = LayoutModel;
-          
+
 
             Session["LayoutModel"] = LayoutModel;
-           
+
             return View();
         }
 
-        public JsonResult ReturnFlow()
-        {
+        public JsonResult ReturnFlow() {
             return Json(Data.posts);
+        }
+
+        public void AddPost(string text) {
+            Data.posts.Add(new Post { ID = Data.posts.Count, text = text, AuthorID = (int)Session["ID"], date = "1/1/2021" });
         }
     }
 }

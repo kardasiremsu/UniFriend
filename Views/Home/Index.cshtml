@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/HomePage.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/HomePage/Home.js"></script>
 </head>
 
 
@@ -27,31 +28,12 @@
                 <p style="float:left"> Video</p>
             </div>
         </div>
-       
 
-        <br /><br /><br>
+        <br />
+        <br />
+        <br />
 
-        <div class="card" style="background-color:gainsboro; border-radius:10px; padding:7px">
-            <h5 class="card-header">Kişi Adı</h5>
-            <div class="card-body">
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Photo</a>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
-        </div>
-
-        <span id="postFlow" class="border border-light">
-
-            <div id="photo" class="col-xs-6 col-md-4">Photo</div>
-            <div class="col-xs-12 col-sm-6 col-md-8"><p>Text</p></div>
-            <div class="col-xs-12 col-sm-6 col-md-2"><p>Like</p></div>
-            <div class="col-xs-12 col-sm-6 col-md-2"><p>Comment</p></div>
-
-        </span>
-
-
+        <div id="postFlow"></div>
     </div>
     <div class="column right" id="Ad">Ad.</div>
 </div>
@@ -64,12 +46,11 @@
                 <h4 class="modal-title">Post</h4>
             </div>
             <div class="modal-body">
-                <textarea maxlength="1000" form-control" style="resize:none; width:70%" rows:""></textarea>
-
+                <textarea id="text" maxlength="1000" style="resize:none; width:70%" rows="5"></textarea>
 
                 <div class="form-group">
                     <label for="exampleInputFile">You can add photo/files/video.</label>
-                    <input type="file" id="exampleInputFile">
+                    <input type="file" id="inputFile">
                 </div>
             </div>
             <div class="modal-footer">
