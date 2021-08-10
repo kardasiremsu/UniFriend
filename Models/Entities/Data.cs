@@ -12,7 +12,18 @@ namespace UniFriend.Models.Entities {
         public static List<Faculty> faculties = GetFaculties();
         public static AddFriendPageModel model = GetModel();
         public static List<Club> clubs = GetClubs();
+        public static List<Post> posts = GetPosts();
         
+        public static List<Post> GetPosts()
+        {
+            return new List<Post>
+            {
+                new Post{ID=0, AuthorID=0, text="selam", likes= new List<int> {0,1},date= DateTime.Now },
+                new Post{ID=0, AuthorID=0, text="selam2", likes= new List<int> {2,1},date= DateTime.Now}
+
+
+            };
+        }
 
         public static AddFriendPageModel GetModel(int ID = -1) {
             return new AddFriendPageModel { userid = ID, faculties = new List<int> { 0, 1 } };

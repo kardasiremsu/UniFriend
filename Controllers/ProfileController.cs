@@ -12,11 +12,14 @@ namespace UniFriend.Controllers
 
         public ActionResult Index()
         {
-            Student student = Data.students[Data.model.userid];
+            ViewData["LayoutViewModel"] = (LayoutViewModel)Session["LayoutModel"];
+        
+            Student student = Data.students[(int)Session["ID"]];
             
             Dictionary<int, string> friends = new Dictionary<int, string>();
             foreach (int i in student.friends)
             {
+                
                 friends.Add(i, Data.students[i].stud_name);
             }
 

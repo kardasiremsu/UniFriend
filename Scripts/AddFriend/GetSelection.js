@@ -244,7 +244,7 @@
                             s += '<img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap">'; //idden gelenler alınacak
                             s += '<div class="card-body">';
                             s += '<p class="card-text" value=' + data[i].ID + '>' + data[i].stud_name + '</p >';
-                            s += '<div><button type="Button" onclick="addFriend('+data[i].ID+')"  class="btn btn-primary">Add Friend</button></div></div></div>';
+                            s += '<div><button type="Button" onclick="addFriend('+data[i].ID+',this)"  class="btn btn-primary">Add Friend</button></div></div></div>';
                            
                         }
                         $('#studentList').css("display", "block");
@@ -260,12 +260,9 @@
             });
         }
     })
-
-   
-
 });
 
-function addFriend(ID) {
+function addFriend(ID,button) {
 
         $.ajax({
             url: '/AddFriend/AddFriend',
@@ -276,17 +273,9 @@ function addFriend(ID) {
             dataType: 'json',
             success: function (data) {
                 if (data == true) {
-
-                    alert("You have a new friend");
-                    /*var s = 'You have a new friend';
-                   
-                    $('#Message').css("display", "block");
-                    $('#studentLectureList').html(s);*/
-
-                }
-                else {
-                    alert("Fail occured");
-
+                    button.innerHTML = "Has been added";  //İleriki aşamalarda onay sorulacak
+                    button.className = "btn btn-success";
+                    button.disabled = true;     
                 }
             }
         });

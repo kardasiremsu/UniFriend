@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-  <head>
+<head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/HomePage.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -12,14 +12,70 @@
 
 
 
-    <div class="row">
-        <div class="column left" id="ClubsActivities">Clubs Activities</div>
-        <div class="column middle" id="Post">
-            <div id="createPost">
-                Create a post
-            </div>
-            <div id="postFlow">Post flow</div>
-        </div>
-        <div class="column right" id="Ad">Ad.</div>
-    </div>
+<div class="row">
+    <div class="column left" id="ClubsActivities">Clubs Activities</div>
+    <div class="column middle" id="Post">
 
+        <div id="createPost" class="card" style="background-color:gainsboro; border-radius:10px; padding:7px">
+            <h5 class="card-header" style="width:30%; float:left">Photo</h5>
+
+            <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%; float:left">Text</button>
+
+            <div class="card-footer">
+                <p style="float:left">Adding Photo/</p>
+
+                <p style="float:left"> Video</p>
+            </div>
+        </div>
+       
+
+        <br /><br /><br>
+
+        <div class="card" style="background-color:gainsboro; border-radius:10px; padding:7px">
+            <h5 class="card-header">Kişi Adı</h5>
+            <div class="card-body">
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Photo</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+
+        <span id="postFlow" class="border border-light">
+
+            <div id="photo" class="col-xs-6 col-md-4">Photo</div>
+            <div class="col-xs-12 col-sm-6 col-md-8"><p>Text</p></div>
+            <div class="col-xs-12 col-sm-6 col-md-2"><p>Like</p></div>
+            <div class="col-xs-12 col-sm-6 col-md-2"><p>Comment</p></div>
+
+        </span>
+
+
+    </div>
+    <div class="column right" id="Ad">Ad.</div>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Post</h4>
+            </div>
+            <div class="modal-body">
+                <textarea maxlength="1000" form-control" style="resize:none; width:70%" rows:""></textarea>
+
+
+                <div class="form-group">
+                    <label for="exampleInputFile">You can add photo/files/video.</label>
+                    <input type="file" id="exampleInputFile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="postButton" type="button" class="btn btn-primary">Post</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -9,27 +9,13 @@ namespace UniFriend.Controllers {
 
 
 
-    public class AddFriendController : Controller {
+    public class AddFriendController : Controller
+    {
 
-        public LayoutViewModel LayoutModel { get; set; }
-        public AddFriendController()
-        {
-            this.LayoutModel = new LayoutViewModel();//has property PageTitle
+         
+        public ActionResult Index() {
 
-        }
-        public ActionResult Index(int id) {
-            Data.model.userid = id;
-            List<Club> clubs = new List<Club>();
-            
-            //Adding clubs to dictionary
-            foreach (int clubid in Data.students[id].club)
-            {
-                clubs.Add(Data.clubs[clubid]);
-            }
-            
-            LayoutModel.Clubs = clubs;
-            this.ViewData["LayoutViewModel"] = this.LayoutModel;
-            Session["LayoutModel"] = LayoutModel;
+            ViewData["LayoutViewModel"] = (LayoutViewModel)Session["LayoutModel"];
             return View(Data.model);
         }
 
@@ -72,7 +58,12 @@ namespace UniFriend.Controllers {
             List<Student> students = new List<Student>();
 
             foreach(int studentID in Data.CRNs[CRNID].students) {
-                students.Add(Data.students[studentID]);
+                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID))
+                {
+                    students.Add(Data.students[studentID]);
+                }
+     
+                
             }
             return Json(students);
         }
@@ -81,13 +72,16 @@ namespace UniFriend.Controllers {
             List<Student> students = new List<Student>();
 
             foreach(int studentID in Data.clubs[clubID].students) {
-                students.Add(Data.students[studentID]);
+                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID))
+                {
+                    students.Add(Data.students[studentID]);
+                }
             }
             return Json(students);
         }
 
         public JsonResult AddFriend(int ID) {
-            Student user = Data.students[Data.model.userid];
+            Student user = Data.students[(int)Session["ID"]];
             user.friends.Add(ID);
             return Json(true);
         }

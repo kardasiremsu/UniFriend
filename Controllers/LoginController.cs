@@ -20,7 +20,9 @@ namespace UniFriend.Controllers
             Student student = Data.students.Find(c => (c.mail == mail) && (c.password == password));
             if (student != null)
             {
-                return Json(Url.Action("Index", "AddFriend", new  { id = student.ID}));
+                Session.Timeout = 50;
+                Session["ID"] = student.ID;
+                return Json(Url.Action("Index", "Home"));
             }
             else
             {
