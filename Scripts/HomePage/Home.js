@@ -14,10 +14,10 @@
                         str += '<a href="#" class="btn btn-primary">Photo</a>';
                     }
                     if (data[i].likes != null) {
-                        str += '<div class="col-xs-12 col-sm-6 col-md-2"><p>Likes: ' + data[i].likes.length + '</p></div>';
+                        str += '<div class="col-xs-12 col-sm-6"><p>Likes: ' + data[i].likes.length + '</p></div>';
                     }
                     if (data[i].comments != null) {
-                        str += '<div class="col-xs-12 col-sm-6 col-md-2"><p>Comments:</p>';
+                        str += '<div class="col-xs-12 col-sm-6"><p>Comments:</p>';
                         data[i].comments.forEach((comment) => {
                             str += '<p>' + comment.text + '</p>';
                         });
