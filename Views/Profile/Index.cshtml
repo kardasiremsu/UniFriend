@@ -1,6 +1,5 @@
 ﻿@model UniFriend.Models.ProfilePageModel
 
-
 @{
     ViewBag.Title = "Index";
 }
@@ -13,7 +12,8 @@
     <title>Profile</title>
     <link rel="stylesheet" href="~/Content/Profile.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/Profile/GetProfile.js"></script>
+    <script src="~/Scripts/Profile/Profile.js"></script>
+    <script src="https://kit.fontawesome.com/14b1552b28.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -24,16 +24,35 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
+                                <a><i data-toggle="modal" data-target='#editModal' style="float:right" class="fas fa-pen"> </i></a>
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>@Model.stud_name</h4>
-                                    <p class="text-secondary mb-1">Student</p> 
+                                    <h5>Student</h5>
+                                    <h6>
+                                        @foreach (KeyValuePair<int, string> i in Model.faculty)
+                                        {
+                                            @i.Value;
+                                            <br />
+                                        }
+
+                                    </h6>
+                                    <h6>
+                                        @foreach (KeyValuePair<int, string> i in Model.department)
+                                        {
+                                            @i.Value;
+                                            <br />
+                                        }
+                                    </h6>
                                     <button class="btn btn-primary">Add Friend</button>
                                     <button class="btn btn-outline-primary">Message</button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="card mt-3">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -59,81 +78,138 @@
                         </ul>
                     </div>
                 </div>
+
+
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <a><i data-toggle="modal" data-target='#editLecturesModal' style="float:right" class="fas fa-pen"> </i></a>
+                            <p>Aldığı Dersler</p>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Model.stud_name
-                                </div>
-                            </div>
-                            <hr>
-                           
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Faculty</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @foreach (KeyValuePair<int, string> i in Model.faculty)
-                                    {
-                                        @i.Value;
-                                    }
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Department</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @foreach (KeyValuePair<int, string> i in Model.department)
-                                    {
-                                        @i.Value;
-                                    }
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Gender</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Model.stud_gender
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-3">
                                     <h6 class="mb-0">Friends</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @foreach(KeyValuePair<int,string> i in Model.friends) { 
-                                        @i.Value; 
+                                    @foreach (KeyValuePair<int, string> i in Model.friends)
+                                    {
+                                        @i.Value;
                                     }
-                                </div>
-                            </div>
-
-
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+
             </div>
 
         </div>
     </div>
 
-    <div data-toggle="modal"</div>
+    <div id="editLecturesModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Page</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input onkeyup="SearchLectures()"id="searchLectures"type="text" class="form-control" placeholder="Search">
+                            </div>                    
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="postButton" type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+   
+
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Page</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input type="text" class="form-control" value="@Model.stud_name">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Faculty</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <div class="suggestion-box">
+                                    <select class="form-select" id="EditFacultyList" style="display: block; ">Faculty</select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Department</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @foreach (KeyValuePair<int, string> i in Model.department)
+                                {
+                                    @i.Value;
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Gender</h6>
+                            </div>
+                            <div id="gender" class="col-sm-9 text-secondary">
+                                @Model.stud_gender
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="postButton" type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
     <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>

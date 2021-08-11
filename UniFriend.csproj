@@ -131,6 +131,7 @@
     <Compile Include="Models\Entities\Data.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\LayoutViewModel.cs" />
+    <Compile Include="Models\ProfileEditModel.cs" />
     <Compile Include="Models\ProfilePageModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +165,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Login\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Profile\Profile.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,6 +181,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\AddFriend\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

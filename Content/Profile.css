@@ -56,3 +56,25 @@
 .shadow-none {
     box-shadow: none !important;
 }
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #2C303A;
+    --loader-size: 52px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1px;
+}
+
+body {
+    margin: 0;
+    font-size: 18px;
+}
+
+body, main {
+    background-color: var(--bg-color);
+}
+

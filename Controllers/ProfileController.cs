@@ -8,7 +8,15 @@ using UniFriend.Models.Entities;
 namespace UniFriend.Controllers
 {
     public class ProfileController : Controller
-    {
+    {/*
+        public ActionResult Edit()
+        {
+            Student user = Data.students[(int)Session["ID"]];
+            ProfileEditModel EditModel = new ProfileEditModel { ID = user.ID, stud_name = user.stud_name, stud_number = user.stud_number, stud_gender = user.stud_gender, lecture = user.lecture, crn = user.crn, faculty = user.faculty, department = user.department };
+
+            return View(EditModel);
+        }*/
+      
 
         public ActionResult Index()
         {
@@ -34,13 +42,27 @@ namespace UniFriend.Controllers
 
             foreach (int department in student.department)
             {
-                departments.Add(department, Data.faculties[department].name);
+                departments.Add(department, Data.departments[department].name);
             }
-
 
             ProfilePageModel profile = new ProfilePageModel { stud_name = student.stud_name, stud_gender = student.stud_gender, faculty = faculties, department = departments, friends = friends };
 
             return View(profile);
+        }
+
+        public JsonResult GetLectures(string text)
+        {
+           
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return Json(Data.lectures);
+            }
+
+           
+            IEnumerable<Lecture> result = Data.lectures.Where(s => s.name.Contains(text));
+        
+            return Json(result);
         }
 
 

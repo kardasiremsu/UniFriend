@@ -34,7 +34,7 @@ namespace UniFriend.Controllers
         {
             Student user = new Student() { ID= Data.students.Count, mail = mail, password = password1 };
             Data.students.Add(user);
-            return Json(Url.Action("Index", "Home"));
+            return Json(Url.Action("Index", "Profil"));
         }
 
     }

@@ -14,8 +14,11 @@ namespace UniFriend.Models.Entities {
         public static List<Club> clubs = GetClubs();
         public static List<Comment> Comments = GetComments();
         public static List<Post> posts = GetPosts();
+       
+        
 
-        public static List<Comment> GetComments() {
+
+            public static List<Comment> GetComments() {
             return new List<Comment>
             {
                 new Comment{ID=0, AuthorID=0, text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut mauris aliquam, dapibus orci ac, viverra ante. Praesent semper pulvinar ultricies. ", likes= new List<int> {0,1}, date= "08/08/2021"},
