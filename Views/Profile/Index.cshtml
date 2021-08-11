@@ -30,16 +30,14 @@
                                     <h4>@Model.stud_name</h4>
                                     <h5>Student</h5>
                                     <h6>
-                                        @foreach (KeyValuePair<int, string> i in Model.faculty)
-                                        {
+                                        @foreach(KeyValuePair<int, string> i in Model.faculty) {
                                             @i.Value;
                                             <br />
                                         }
 
                                     </h6>
                                     <h6>
-                                        @foreach (KeyValuePair<int, string> i in Model.department)
-                                        {
+                                        @foreach(KeyValuePair<int, string> i in Model.department) {
                                             @i.Value;
                                             <br />
                                         }
@@ -86,18 +84,11 @@
                             <a><i data-toggle="modal" data-target='#editLecturesModal' style="float:right" class="fas fa-pen"> </i></a>
                             <p>Aldığı Dersler</p>
                             <div class="row">
-                                <div class="col-sm-12">
-
-
-                                </div>
+                                <div class="col-sm-12" id="myLectures"></div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -106,8 +97,7 @@
                                     <h6 class="mb-0">Friends</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @foreach (KeyValuePair<int, string> i in Model.friends)
-                                    {
+                                    @foreach(KeyValuePair<int, string> i in Model.friends) {
                                         @i.Value;
                                     }
                                 </div>
@@ -133,11 +123,13 @@
                     <div class="row">
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
-                                <input onkeyup="SearchLectures()"id="searchLectures"type="text" class="form-control" placeholder="Search">
-                            </div>                    
+                                <input onkeyup="SearchLectures()" id="searchLectures" type="text" class="form-control" placeholder="Search">
+                            </div>
                         </form>
-
                     </div>
+                    <br />
+
+                    <div id="searchedLectures"></div>
 
                 </div>
                 <div class="modal-footer">
@@ -148,7 +140,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-   
+
 
     <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -183,8 +175,7 @@
                                 <h6 class="mb-0">Department</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                @foreach (KeyValuePair<int, string> i in Model.department)
-                                {
+                                @foreach(KeyValuePair<int, string> i in Model.department) {
                                     @i.Value;
                                 }
                             </div>
@@ -198,10 +189,7 @@
                                 @Model.stud_gender
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
