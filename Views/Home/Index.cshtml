@@ -4,7 +4,9 @@
 
 <head>
     <meta name="viewport" content="width=device-width" />
+
     <link rel="stylesheet" href="~/Content/HomePage.css">
+    <link rel="stylesheet" href="~/Content/Home.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/HomePage/Home.js"></script>
 </head>
@@ -18,10 +20,15 @@
     <div class="column middle" id="Post">
 
         <div id="createPost" style="background-color:gainsboro; border-radius:10px; padding:7px">
-            <div class="card" >
-                <h5 style="width:30%;">Photo</h5>
+            <div class="card" >                
                 <div class="card-body">
-                    <button type="button" data-toggle="modal"  data-target="#myModal" id="textButton" style="width:70%;">Text</button>
+                    <div>
+                        <span>Photo</span>
+                        <button type="button" class="outline" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;margin-left:90px;">Button</button>
+                        @*<button type="submit" class="outline white-blue" style="width:70%;">Button</button>
+                        <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>
+                        <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>*@
+                    </div>
 
                     <div class="card-footer">
                         <p style="">Adding Photo</p>

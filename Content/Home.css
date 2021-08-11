@@ -1,0 +1,93 @@
+﻿body {
+  background-color: #ecf1ef;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+button {
+  cursor: pointer;
+  outline: none;
+}
+button.outline {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  color: #1172c4;
+  font-size: 14px;
+  border-color: #1172c4;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 22px;
+  padding: 10px 40px;
+  text-transform: uppercase;
+  transition: all 0.2s linear;
+}
+button.outline a {
+  text-decoration: none;
+}
+button.outline:hover {
+  color: white;
+  background: #1172c4;
+  border-color: white;
+  transition: all 0.2s linear;
+}
+button.outline:active {
+  border-radius: 22px;
+}
+button.white-blue {
+  font-weight: 700;
+  color: #00aeef;
+  border-color: white;
+  background: white;
+}
+button.white-blue:hover {
+  color: white;
+  background: #00aeef;
+  border-color: white;
+}
+button.white-green {
+  font-weight: 700;
+  color: #7dc21e;
+  border-color: white;
+  background: white;
+}
+button.white-green:hover {
+  color: white;
+  background: #7dc21e;
+  border-color: white;
+}
+button.green-white {
+  font-weight: 700;
+  color: #7dc21e;
+  border-color: #7dc21e;
+  background: transparent;
+}
+button.green-white:hover {
+  color: white;
+  background: #7dc21e;
+  border-color: #7dc21e;
+}
+button.purple-white {
+  font-weight: 700;
+  color: #664e96;
+  border-color: #664e96;
+  background: transparent;
+}
+button.purple-white:hover {
+  color: white;
+  background: #664e96;
+  border-color: #664e96;
+}
+button.white-purple {
+  font-weight: 700;
+  color: #664e96;
+  border-color: white;
+  background: white;
+}
+button.white-purple:hover {
+  color: white;
+  background: #664e96;
+  border-color: white;
+}
