@@ -52,15 +52,20 @@ namespace UniFriend.Controllers
 
         public JsonResult GetLectures(string text)
         {
-           
-
+            text = text.ToLower();
             if (string.IsNullOrEmpty(text))
             {
                 return Json(Data.lectures);
             }
 
-           
-            IEnumerable<Lecture> result = Data.lectures.Where(s => s.name.Contains(text));
+            List<Lecture> result = new List<Lecture>();
+            foreach(Lecture lecture in Data.lectures)
+            {
+                if (lecture.name.ToLower().Contains(text))
+                {
+                    result.Add(lecture);
+                }
+            }
         
             return Json(result);
         }

@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
 
-    $('#editModal').on('shown.bs.modal',function() {
+    $('#editModal').on('shown.bs.modal', function () {
         $.ajax({
             url: '/AddFriend/GetFaculty',
             type: 'post',
@@ -23,39 +23,24 @@ $(document).ready(function () {
                 }
             }
         });
-
-
     });
-   
-    function SearchLectures() {
-    
-            var text = $('searchLectures').val();
-        $.ajax({
-            url: '/Profile/GetLectures',
-            type: 'post',
-            data: {
-                text
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data.length != 0) {
-                    console.log(data);
-                }
-
-            }
-        });
-                
-     
-
-
-    }
-    
-        
-        
-
-
-
-    });
-
 });
 
+function SearchLectures() {
+
+    var text = $('#searchLectures').val();
+    $.ajax({
+        url: '/Profile/GetLectures',
+        type: 'post',
+        data: {
+            text
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.length != 0) {
+                console.log(data);
+            }
+
+        }
+    });
+    }
