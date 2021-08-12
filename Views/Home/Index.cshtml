@@ -7,27 +7,295 @@
 
     <link rel="stylesheet" href="~/Content/HomePage.css">
     <link rel="stylesheet" href="~/Content/Home.css">
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
     <script src="~/Scripts/HomePage/Home.js"></script>
 </head>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card sticky-top" style="top: 20px">
+                <div class="card-header">
+                    <h5 class="card-title">Events</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Club events</h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, deleniti!</p>
+                </div>
+                <div class="card-footer"><a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a></div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="input-group" data-bs-toggle="modal" data-bs-target="#postModal">
+                        <input type="text"
+                               class="form-control"
+                               id="exampleInputEmail1"
+                               placeholder="Enter your post"
+                               style="margin-right: 20px"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success" style="margin-right: 20px">
+                                <i class="fas fa-file"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-warning" style="margin-right: 20px">
+                                <i class="fas fa-photo-video"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-danger" style="margin-right: 20px">
+                                <i class="fas fa-video"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title" style="display: inline-block">Sinan Demir</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, dignissimos aliquam. Vel eos atque blanditiis
+                        laborum. Enim culpa vel, asperiores, assumenda esse nostrum cupiditate dolore dolorum, soluta doloribus quam tempore
+                        ex iusto facilis maxime ad. Vel consequatur iure cumque nesciunt officiis mollitia cupiditate quam nostrum veniam qui,
+                        adipisci eum reprehenderit.
+                    </p>
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, dignissimos aliquam. Vel eos atque blanditiis
+                        laborum. Enim culpa vel, asperiores, assumenda esse nostrum cupiditate dolore dolorum, soluta doloribus quam tempore
+                        ex iusto facilis maxime ad. Vel consequatur iure cumque nesciunt officiis mollitia cupiditate quam nostrum veniam qui,
+                        adipisci eum reprehenderit.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="email"
+                               class="form-control"
+                               id="exampleInputEmail1"
+                               aria-describedby="emailHelp"
+                               placeholder="Enter your comment" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-info position-relative" style="margin-right: 20px">
+                                <i class="fab fa-telegram-plane"></i>
+                            </button>
+                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">23</span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-warning position-relative"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#commentsOne"
+                                    aria-expanded="false"
+                                    aria-controls="commentsOne"
+                                    style="margin-right: 20px">
+                                <i class="far fa-comments"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+                            </button>
+                            <button type="button" class="btn btn-danger position-relative">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-horizontal" id="commentsOne">
+                    <div class="card m-3">
+                        <div class="card-header">
+                            <h5 class="card-title" style="display: inline-block">Ayça Tekin</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
+                        </div>
+                        <div class="card card-body">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quidem quos eum id qui tempore aut dolore
+                                facilis non quis!
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugiat magnam quae recusandae dolorum facere
+                                molestiae veniam iure quidem animi aspernatur, necessitatibus, fuga, quibusdam numquam praesentium libero.
+                                Saepe laborum eius veniam nesciunt ad, accusantium sapiente quisquam delectus quae voluptas exercitationem
+                                atque est omnis sit magnam cupiditate iure inventore voluptatibus nobis!
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">7</span>
+                            </button>
+                            <button type="button" class="btn btn-danger position-relative" style="margin-right: 20px">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card m-3">
+                        <div class="card-header">
+                            <h5 class="card-title" style="display: inline-block">Mehmet Uzun</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
+                        </div>
+                        <div class="card card-body">
+                            <img src="/images/softtech.jpg" style="width: 100%; padding: 10px" />
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et accusamus minus quisquam aliquam fugit natus
+                                magni esse? Officia minus asperiores esse, dolores cum animi non nemo sunt. Debitis, mollitia repellendus?
+                            </p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, hic eaque. Iste amet similique sed sequi
+                                accusamus quia dicta aspernatur beatae illo quis eligendi libero, sapiente dolore tenetur necessitatibus quas.
+                                Velit, rem nihil. Impedit ut error, quae totam aut enim consequatur similique fuga ducimus cum modi, repellat
+                                voluptas. A nostrum repudiandae assumenda modi odio voluptatibus nisi esse quod ipsum neque?
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">44</span>
+                            </button>
+                            <button type="button" class="btn btn-danger position-relative" style="margin-right: 20px">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title" style="display: inline-block">Ayça Su</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, dignissimos aliquam. Vel eos atque blanditiis
+                        laborum. Enim culpa vel, asperiores, assumenda esse nostrum cupiditate dolore dolorum, soluta doloribus quam tempore
+                        ex iusto facilis maxime ad. Vel consequatur iure cumque nesciunt officiis mollitia cupiditate quam nostrum veniam qui,
+                        adipisci eum reprehenderit.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="email"
+                               class="form-control"
+                               id="exampleInputEmail1"
+                               aria-describedby="emailHelp"
+                               placeholder="Enter your comment" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-info position-relative" style="margin-right: 20px">
+                                <i class="fab fa-telegram-plane"></i>
+                            </button>
+                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">57</span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-warning position-relative"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#commentsTwo"
+                                    aria-expanded="false"
+                                    aria-controls="commentsTwo"
+                                    style="margin-right: 20px">
+                                <i class="far fa-comments"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>
+                            </button>
+                            <button type="button" class="btn btn-danger position-relative">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-horizontal" id="commentsTwo">
+                    <div class="card m-3">
+                        <div class="card-header">
+                            <h5 class="card-title" style="display: inline-block">Ali Ata Bak</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
+                        </div>
+                        <div class="card card-body">
+                            <img src="/images/softtech.jpg" style="width: 100%; padding: 10px" />
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus explicabo, exercitationem sint velit
+                                distinctio perferendis sed deleniti doloribus ipsam quasi blanditiis repellendus qui praesentium. Aliquam
+                                eveniet quos officiis modi amet eos? Architecto voluptates neque qui similique mollitia id. Earum quisquam
+                                dolor sapiente illum iste? Alias necessitatibus doloribus tempora nisi vitae aliquam ipsa pariatur voluptatum
+                                repudiandae voluptatem, et officia magnam dignissimos sequi labore quibusdam tenetur autem sed! Itaque,
+                                voluptatibus. Dolores asperiores doloribus itaque laborum quaerat accusantium natus, sint nesciunt eaque.
+                                Animi cum, ipsum rerum tenetur quibusdam hic ex ipsa? Repellat ipsam sint aperiam cum quia pariatur ipsa
+                                magni! Rem, facere at?
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                <i class="far fa-thumbs-up"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">44</span>
+                            </button>
+                            <button type="button" class="btn btn-danger position-relative" style="margin-right: 20px">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card sticky-top" style="top: 20px">
+                <div class="card-header"><img src="/images/wwf.png" class="card-img-top" alt="wwf" /></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        The World Wide Fund for Nature (WWF) is an international non-governmental organization founded in 1961 that works in
+                        the field of wilderness preservation and the reduction of human impact on the environment.
+                    </p>
+                </div>
+                <div class="card-footer"><a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="postModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Post</h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="text" maxlength="1000" style="resize:none; width:70%" rows="5"></textarea>
+
+                <div class="form-group">
+                    <label for="exampleInputFile">You can add photo/files/video.</label>
+                    <input type="file" id="inputFile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                <button id="postButton" type="button" class="btn btn-primary">Post</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<!--
 
-
-<div class="row">
+    <div class="row">
     <div class="column left" id="ClubsActivities">Clubs Activities</div>
     <div class="column middle" id="Post">
 
         <div id="createPost" style="background-color:gainsboro; border-radius:10px; padding:7px">
-            <div class="card" >                
+            <div class="card">
                 <div class="card-body">
                     <div>
                         <span>Photo</span>
                         <button type="button" class="outline" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;margin-left:90px;">Button</button>
                         @*<button type="submit" class="outline white-blue" style="width:70%;">Button</button>
-                        <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>
-                        <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>*@
+                            <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>
+                            <button type="button" data-toggle="modal" data-target="#myModal" id="textButton" style="width:70%;">Text</button>*@
                     </div>
 
                     <div class="card-footer">
@@ -38,7 +306,7 @@
                 </div>
             </div>
         </div>
-    
+
         <br />
         <br />
         <br />
@@ -67,6 +335,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id="postButton" type="button" class="btn btn-primary">Post</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
+-->

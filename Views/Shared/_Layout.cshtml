@@ -6,58 +6,115 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <title>@ViewBag.Title - UniFriend</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/14b1552b28.js"></script>
     <script src="~/Scripts/AddFriend/GetSelection.js"></script>
+
 
     @Styles.Render("~/Content/css")
 
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("UniFriend", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="dropdown">
-                        <a id="network-dropdown" data-toggle="dropdown"
-                           class="dropdown-toggle">Network</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a data-toggle="modal" data-target="#addFriendModal">Add Friend</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            @Html.RouteLink("UniFriend", new { action = "Index", controller = "Home" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.RouteLink("Home", new { action = "Index", controller = "Home" }, new { @class = "nav-link" })
+                    </li>
 
-
-                            <li><a>My Friends</a></li>
-
-
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="friends-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Network
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#addFriendModal">Add Friend</a></li>
+                            <li><a class="dropdown-item" href="#">My Friends</a></li>
                         </ul>
                     </li>
 
-
-                    <li class="dropdown">
-                        <a id="clubs-dropdown" data-toggle="dropdown"
-                           class="dropdown-toggle">Clubs</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="clubs-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Clubs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @{
-                                foreach (var item in viewModel.Clubs)
-                                {
-                                    <li value="@item.ID"><a>@item.name</a></li>
+                                foreach(var item in viewModel.Clubs) {
+                                    <li value="@item.ID"><a class="nav-link">@item.name</a></li>
                                 }
                             }
-
                         </ul>
                     </li>
 
+                    <li class="nav-item">
+                        @Html.RouteLink("Profile", new { action = "Index", controller = "Profile" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-                    <li>@Html.ActionLink("Profile", "Index", "Profile")</li>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - UniFriend</p>
+        </footer>
+    </div>
+    <!--
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    Html.ActionLink("UniFriend", "Index", "Home", new {area = ""}, new {class = "navbar-brand"})
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a id="network-dropdown" data-toggle="dropdown"
+                               class="dropdown-toggle">Network</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a data-toggle="modal" data-target="#addFriendModal">Add Friend</a></li>
+
+
+                                <li><a>My Friends</a></li>
+
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a id="clubs-dropdown" data-toggle="dropdown"
+                               class="dropdown-toggle">Clubs</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                {
+                                    foreach (var item in viewModel.Clubs)
+                                    {
+                                        <li value="item.ID"><a>item.name</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </li>
+
+
+                        <li>Html.ActionLink("Profile", "Index", "Profile")</li>
 
                     </ul>
                     <ul class="nav navbar-nav nav-right" style="float:right">
@@ -78,12 +135,12 @@
 
 
 
-                </ul>
+                    </ul>
+                </div>
             </div>
+
         </div>
-
-    </div>
-
+        -->
     <div class="modal fade" id="addFriendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -93,7 +150,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="menu">
-                        
+
 
                         <div style="margin-top: 15px">
                             <select class="form-select" id="selectionFor" style="display: block;"></select>
@@ -103,30 +160,30 @@
                             <select class="form-select" id="studentFacultyList" style="display: none;"></select>
                         </div>
 
-                        <div style="margin-top: 15px ">
-                            <select class="form-select" id="studentDepartmentList" style="display: none; "></select>
+                        <div style="margin-top: 15px">
+                            <select class="form-select" id="studentDepartmentList" style="display: none;"></select>
                         </div>
 
-                        <div style="margin-top: 15px ">
-                            <select class="form-select" id="studentLectureList" style="display: none; "></select>
+                        <div style="margin-top: 15px">
+                            <select class="form-select" id="studentLectureList" style="display: none;"></select>
                         </div>
 
-                        <div style="margin-top: 15px ">
+                        <div style="margin-top: 15px">
                             <select class="form-select" id="studentCRNList" style="display: none;"></select>
                         </div>
 
-                        <div style="margin-top: 15px ">
-                            <select class="form-select" id="ClubList" style="display: none; "></select>
+                        <div style="margin-top: 15px">
+                            <select class="form-select" id="ClubList" style="display: none;"></select>
                         </div>
 
 
-                        <div style="margin-top: 15px ">
-                            <button type="button" class="btn btn-outline-primary" id="FindButton" style="display: block; ">Find Your Friends</button>
+                        <div style="margin-top: 15px">
+                            <button type="button" class="btn btn-outline-primary" id="FindButton" style="display: block;">Find Your Friends</button>
                         </div>
                     </div>
 
                     <div class="main">
-                        <div id="studentList" style="display: none; ">
+                        <div id="studentList" style="display: none;">
                         </div>
                     </div>
                 </div>
@@ -137,13 +194,6 @@
         </div>
     </div>
 </body>
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-</div>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
