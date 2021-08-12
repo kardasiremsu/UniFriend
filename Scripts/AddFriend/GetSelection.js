@@ -205,12 +205,18 @@
                     if (data.length != 0) {
                         var s = "";
                         for (var i = 0; i < data.length; i++) {
+                            if (i % 3 == 0) {
+                                s += '<div class="row">';
+                            }
+                            s += '<div class="col-sm-4">';
                             s += '<div class="card" style="width: 10rem; ">';
                             s += '<img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap" style="width:150px">'; //idden gelenler alınacak
                             s += '<div class="card-body">';
                             s += '<p class="card-text" id=' + data[i].ID + '>' + data[i].stud_name + '</p >';
-                            s += '<div><button type="AddButton" onclick="addFriend(data[i].ID)" class="btn btn-primary">Add Friend</button></div></div></div>';
-                            
+                            s += '<div  button type="AddButton" onclick="addFriend(data[i].ID)" class="btn btn-primary">Add Friend</button></div></div></div></div>';
+                            if (i % 3 == 0) {
+                                s += '</div>';
+                            }
                            
                         }
                         $('#studentList').css("display", "block");
@@ -239,13 +245,22 @@
                 success: function (data) {
                     if (data.length != 0) {
                         var s = "";
+                        
+                           
                         for (var i = 0; i < data.length; i++) {
+                            if (i % 3 == 0) {
+                                s += '<div class="row">';
+                            }
+                            s += '<div class="col-sm-4">';
+                            s += '<div class="card" style="width: 10rem; ">';
                             s += '<div class="card" style="width: 10rem;">';
                             s += '<img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap">'; //idden gelenler alınacak
                             s += '<div class="card-body">';
                             s += '<p class="card-text" value=' + data[i].ID + '>' + data[i].stud_name + '</p >';
-                            s += '<div><button type="Button" onclick="addFriend('+data[i].ID+',this)"  class="btn btn-primary">Add Friend</button></div></div></div>';
-                           
+                            s += '<div><button type="Button" onclick="addFriend(' + data[i].ID +',this)"  class="btn btn-primary">Add Friend</button></div></div></div></div>';
+                            if (i % 3 == 0) {
+                                s += '</div>';
+                            }
                         }
                         $('#studentList').css("display", "block");
                         $('#studentList').html(s);

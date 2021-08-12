@@ -28,8 +28,8 @@ namespace UniFriend.Controllers {
 
 
             Session["LayoutModel"] = LayoutModel;
-
-            return View();
+            
+            return View(Data.homeModel);
         }
 
         public JsonResult ReturnFlow() {
@@ -38,6 +38,7 @@ namespace UniFriend.Controllers {
 
         public void AddPost(string text) {
             Data.posts.Add(new Post { ID = Data.posts.Count, text = text, AuthorID = (int)Session["ID"], date = "1/1/2021" });
+           
         }
     }
 }

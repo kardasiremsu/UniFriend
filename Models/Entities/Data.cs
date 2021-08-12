@@ -14,23 +14,26 @@ namespace UniFriend.Models.Entities {
         public static List<Club> clubs = GetClubs();
         public static List<Comment> Comments = GetComments();
         public static List<Post> posts = GetPosts();
+        public static HomePageModel homeModel = GetHomeModel();
 
 
-
-
+        public static HomePageModel GetHomeModel()
+        {
+            return  new HomePageModel{ posts = posts,students = students};
+        }
         public static List<Comment> GetComments() {
             return new List<Comment>
             {
-                new Comment{ID=0, AuthorID=0, text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut mauris aliquam, dapibus orci ac, viverra ante. Praesent semper pulvinar ultricies. ", likes= new List<int> {0,1}, date= "08/08/2021"},
-                new Comment{ID=1, AuthorID=1, text="Cras pellentesque, lectus non pharetra vulputate, rhoncus at vehicula at, lobortis in massa.", likes= new List<int> {2,1}, date= "08/08/2021"}
+                new Comment{ID=0, AuthorID=2, text="Yorum1 ", likes= new List<int> {0,1}, date= "08/08/2021"},
+                new Comment{ID=1, AuthorID=3, text="Yorum2.", likes= new List<int> {2,1}, date= "08/08/2021"}
             };
         }
 
         public static List<Post> GetPosts() {
             return new List<Post>
             {
-                new Post{ID=0, AuthorID=0, text="In tempor lectus vitae purus condimentum, ac blandit ex mattis. Donec ut mauris aliquam, dapibus orci ac, viverra ante. Praesent semper pulvinar ultricies. Sed suscipit turpis ac iaculis tempor.", likes= new List<int> {0,1}, date= "08/09/2021", comments = Comments},
-                new Post{ID=1, AuthorID=1, text="Cras pellentesque, lectus non pharetra vulputate, est elit ornare diam, sit amet condimentum justo sapien a urna..", likes= new List<int> {2,1}, date= "08/08/2021", comments = Comments}
+                new Post{ID=0, AuthorID=0, text="Post1", likes= new List<int> {0,1}, date= "08/09/2021", comments = Comments},
+                new Post{ID=1, AuthorID=1, text="Post2", likes= new List<int> {2,1}, date= "08/08/2021", comments = Comments}
             };
         }
 
@@ -65,16 +68,19 @@ namespace UniFriend.Models.Entities {
             {
                 new Department{ID = 0, name = "Bilgisayar Mühendisliği",lectures= new List<int> {0,1} },
                 new Department{ID = 1, name = "Elektrik Elektronik Mühendisliği",lectures= new List<int> {3} },
-                new Department{ID = 2, name = "Hukuk",lectures= new List<int> {2} }
+                new Department{ID = 2, name = "Hukuk",lectures= new List<int> {2} },
+                new Department{ID = 3, name = "Tıp",lectures= new List<int> {2} }
             };
         }
 
-        public static List<Faculty> GetFaculties() {
+        public static List<Faculty> GetFaculties()
+        {
             return new List<Faculty> {
-            new Faculty { ID = 0, name = "Mühendislik Fakültesi", departments = new List<int> { 0, 1 } },
-            new Faculty { ID = 1, name = "Hukuk Fakültesi", departments = new List<int> { 2 } }};
+                new Faculty { ID = 0, name = "Mühendislik Fakültesi", departments = new List<int> { 0, 1 } },
+                new Faculty { ID = 1, name = "Hukuk Fakültesi", departments = new List<int> { 2 } },
+                new Faculty { ID = 2, name = "Sağlık Fakültesi", departments = new List<int> { 2 } }
+            };
         }
-
 
         public static List<Student> GetStudents() {
             return new List<Student>

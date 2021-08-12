@@ -35,7 +35,7 @@
                             Network
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#addFriendModal">Add Friend</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addFriendModal">Add Friend</a></li>
                             <li><a class="dropdown-item" href="#">My Friends</a></li>
                         </ul>
                     </li>
@@ -46,7 +46,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @{
-                                foreach(var item in viewModel.Clubs) {
+                                foreach (var item in viewModel.Clubs)
+                                {
                                     <li value="@item.ID"><a class="nav-link">@item.name</a></li>
                                 }
                             }
@@ -142,10 +143,10 @@
         </div>
         -->
     <div class="modal fade" id="addFriendModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Find Your Friend</h4>
                 </div>
                 <div class="modal-body">
@@ -193,6 +194,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 @Scripts.Render("~/bundles/jquery")

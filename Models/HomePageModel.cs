@@ -5,7 +5,8 @@ using System.Web;
 
 namespace UniFriend.Models {
     public class HomePageModel {
-        public List<int> posts { get; set; }
+        public List<Post> posts { get; set; }
+        public List<Student> students { get; set; }
     }
     public class Post {
         public int ID { get; set; }

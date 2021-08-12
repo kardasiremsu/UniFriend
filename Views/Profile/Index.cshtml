@@ -30,14 +30,16 @@
                                     <h4>@Model.stud_name</h4>
                                     <h5>Student</h5>
                                     <h6>
-                                        @foreach(KeyValuePair<int, string> i in Model.faculty) {
+                                        @foreach (KeyValuePair<int, string> i in Model.faculty)
+                                        {
                                             @i.Value;
                                             <br />
                                         }
 
                                     </h6>
                                     <h6>
-                                        @foreach(KeyValuePair<int, string> i in Model.department) {
+                                        @foreach (KeyValuePair<int, string> i in Model.department)
+                                        {
                                             @i.Value;
                                             <br />
                                         }
@@ -97,7 +99,8 @@
                                     <h6 class="mb-0">Friends</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    @foreach(KeyValuePair<int, string> i in Model.friends) {
+                                    @foreach (KeyValuePair<int, string> i in Model.friends)
+                                    {
                                         @i.Value;
                                     }
                                 </div>
@@ -140,64 +143,114 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Edit Page</h4>
-                </div>
-                <div class="modal-body">
+    
 
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Full Name</h6>
+
+            <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Edit Page</h4>
                         </div>
-                        <div class="col-sm-9 text-secondary">
-                            <input type="text" class="form-control" value="@Model.stud_name">
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Faculty</h6>
+                        <div class="modal-body">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                        <div class="mt-3">
+
+                                            <h6>Student</h6>
+                                            <h6>
+                                                @foreach (KeyValuePair<int, string> i in Model.faculty)
+                                                {
+                                                    @i.Value;
+                                                    <i class="fas fa-trash" onClick="deleteFaculty(@i.Key, this)"></i>
+                                                    <br />
+                                                }
+
+                                            </h6>
+                                            <h6>
+                                                @foreach (KeyValuePair<int, string> i in Model.department)
+                                                {
+                                                    @i.Value;
+                                                    <i class="fas fa-trash" onClick="deleteDepartment(@i.Key, this)"></i>
+                                                    <br />
+                                                }
+                                            </h6>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-9 text-secondary">
-                                <div class="suggestion-box">
-                                    <select class="form-select" id="EditFacultyList" style="display: block; ">Faculty</select>
+                            <br />
+                            <h6>Add New Informations</h6>
+                            <form class="row g-3">
+                                <div class="form-group row mb-2">
+                                    <label for="name" class="col-sm-4 col-form-label">Name</label>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input id="changeName" class="form-control" type="text" value="@Model.stud_name" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
                                 </div>
 
-                            </div>
+                                <div class="form-group row mb-2">
+                                    <label for="name" class="col-sm-4 col-form-label">Faculty</label>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input onkeyup="SearchFaculties()" id="searchFaculties" type="text" class="form-control" placeholder="Search">
+                                        <div id="searchedFaculties"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-2">
+                                    <label for="name" class="col-sm-4 col-form-label">Department</label>
+                                    <div class="col-sm-8 text-secondary">
+                                        <input onkeyup="SearchDepartments()" id="searchDepartments" type="text" class="form-control" placeholder="Search">
+                                        <div id="searchedDepartments"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-2">
+                                    <label for="name" class="col-sm-4 col-form-label">Gender</label>
+                                    <div class="col-sm-8 text-secondary">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                            <label class="form-check-label" for="exampleRadios2">
+                                                Female
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                            <label class="form-check-label" for="exampleRadios2">
+                                                Does not matter
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button id="saveChanges" class="btn btn-primary" type="submit">Save Changes</button> 
+                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
                         </div>
+                        <div class="modal-footer">
+                            
 
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Department</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                @foreach(KeyValuePair<int, string> i in Model.department) {
-                                    @i.Value;
-                                }
-                            </div>
+                            <!--<button data-bs-dismiss="modal" >Html.RouteLink("Save Changes", new { action = "Index", controller = "Profile" }, new { class = "btn btn-primary", id = "saveChanges", type= "submit" })</button>-->
                         </div>
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Gender</h6>
-                            </div>
-                            <div id="gender" class="col-sm-9 text-secondary">
-                                @Model.stud_gender
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                    <button id="postButton" type="button" class="btn btn-primary">Save Changes</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
 
-    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+            <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

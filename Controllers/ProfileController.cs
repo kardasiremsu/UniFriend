@@ -72,8 +72,30 @@ namespace UniFriend.Controllers {
             return Json(true);
         }
 
+        public JsonResult AddDepartment(int departmentID)
+        {
+            Data.students[(int)Session["ID"]].department.Add(departmentID);
+            return Json(true);
+        }
+        public JsonResult AddFaculty(int facultyID)
+        {
+            Data.students[(int)Session["ID"]].faculty.Add(facultyID);
+            return Json(true);
+        }
+
         public JsonResult DeleteLecture(int lectureID) {
             Data.students[(int)Session["ID"]].lecture.Remove(lectureID);
+            return Json(true);
+        }
+
+        public JsonResult DeleteDepartment(int departmentID)
+        {
+            Data.students[(int)Session["ID"]].department.Remove(departmentID);
+            return Json(true);
+        }
+        public JsonResult DeleteFaculty(int facultyID)
+        {
+            Data.students[(int)Session["ID"]].faculty.Remove(facultyID);
             return Json(true);
         }
 
@@ -84,5 +106,69 @@ namespace UniFriend.Controllers {
             }
             return Json(lectures);
         }
+
+        public JsonResult GetDepartments(string text)
+        {
+            List<Department> outOf = new List<Department>();
+            foreach (Department department in Data.departments)
+            {
+                if (!Data.students[(int)Session["ID"]].department.Contains(department.ID))
+                {
+                    outOf.Add(department);
+                }
+            }
+
+            text = text.ToLower();
+            if (string.IsNullOrEmpty(text))
+            {
+                return Json(outOf);
+            }
+
+            List<Department> result = new List<Department>();
+            foreach (Department department in outOf)
+            {
+                if (department.name.ToLower().Contains(text))
+                {
+                    result.Add(department);
+                }
+            }
+
+            return Json(result);
+        }
+
+        public void ChangeName(string text)
+        {
+            Data.students[(int)Session["ID"]].stud_name = text;
+        }
+
+        public JsonResult GetFaculties(string text)
+        {
+            List<Faculty> outOf = new List<Faculty>();
+            foreach (Faculty faculty in Data.faculties)
+            {
+                if (!Data.students[(int)Session["ID"]].faculty.Contains(faculty.ID))
+                {
+                    outOf.Add(faculty);
+                }
+            }
+
+            text = text.ToLower();
+            if (string.IsNullOrEmpty(text))
+            {
+                return Json(outOf);
+            }
+
+            List<Faculty> result = new List<Faculty>();
+            foreach (Faculty faculty in outOf)
+            {
+                if (faculty.name.ToLower().Contains(text))
+                {
+                    result.Add(faculty);
+                }
+            }
+
+            return Json(result);
+        }
     }
 }
+
