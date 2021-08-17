@@ -1,8 +1,10 @@
-﻿@model UniFriend.Models.ProfilePageModel
+﻿@model UniFriend.Models.ClubProfileModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ClubProfile";
 }
+
+
 
 <!DOCTYPE html>
 
@@ -27,24 +29,10 @@
                                 <a><i data-bs-toggle="modal" data-bs-target='#editModal' style="float:right" class="fas fa-pen"> </i></a>
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
-                                    <h4>@Model.stud_name</h4>
-                                    <h5>Student</h5>
-                                    <h6>
-                                        @foreach (KeyValuePair<int, string> i in Model.faculty)
-                                        {
-                                            @i.Value;
-                                            <br />
-                                        }
-
-                                    </h6>
-                                    <h6>
-                                        @foreach (KeyValuePair<int, string> i in Model.department)
-                                        {
-                                            @i.Value;
-                                            <br />
-                                        }
-                                    </h6>
-                                    <button class="btn btn-primary">Add Friend</button>
+                                    <h4>@Model.name</h4>
+                                    <h5>Club</h5>
+                                    <h6>Followers:@Model.students.Count</h6>
+                                    <button class="btn btn-primary">Follow</button>
                                     <button class="btn btn-outline-primary">Message</button>
 
                                 </div>
@@ -84,10 +72,10 @@
                 <div class="col-8">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target='#editLecturesModal' style="float:right">Add Lecture</button>
-                            <p>Lectures</p>
+                            <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target='#addActivity' style="float:right">Add Activity</button>
+                            <p>Activities</p>
                             <div class="row">
-                                <div class="col-sm-12" id="myLectures"></div>
+                                <div class="col-sm-12" id="activities"></div>
                             </div>
                         </div>
                     </div>
@@ -95,7 +83,7 @@
                         <div class="card-header">
                             <nav class="navbar navbar-light bg-light">
                                 <div class="container-fluid">
-                                    <a class="navbar-brand">Friends</a>
+                                    <a class="navbar-brand">Followers</a>
                                     <form class="d-flex">
                                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -106,7 +94,8 @@
                         <div class="card-body ">
                             <div class="container justify-content-center">
                                 <div class="row row-cols-2 ">
-                                    @{ foreach (var i in Model.friends) { 
+                                    @{ foreach (var i in Model.students)
+                                        {
 
                                             <div class="col mb-3">
 
@@ -148,152 +137,103 @@
                         </div>
                     </div>
                 </div>
-
-                
-
             </div>
 
         </div>
     </div>
 
-
-    <div id="editLecturesModal" class="modal" tabindex="-1" role="dialog">
+    <div id="addActivity" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Add Lecture</h4>
+                    <h4 class="modal-title">Edit Page</h4>
                 </div>
                 <div class="modal-body">
 
-                    <div class="row">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input onkeyup="SearchLectures()" id="searchLectures" type="text" class="form-control" placeholder="Search">
+                    <form class="row">
+                        <div class="form-group row mb-2">
+                            <label for="name" class="col-sm-4 col-form-label">Activity Name</label>
+                            <div class="col-sm-8 text-secondary">
+                                <input id="changeName" class="form-control" type="text" value="" Activity Name" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <br />
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="name" class="col-sm-4 col-form-label">Select Date</label>
+                            <div id="date-picker" class="col-sm-8 text-secondary md-form md-outline input-with-post-icon datepicker" inline="true">
+                                <input placeholder="Select date" type="text" id="example" class="form-control">
+                                <i class="fas fa-calendar input-prefix"></i>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label for="name" class="col-sm-4 col-form-label">Explanation</label>
+                            <div class="col-sm-8 text-secondary">
+                                <textarea></textarea>
+                            </div>
+                            </div>
+                            <div class="col-12">
+                                <button id="saveChanges" class="btn btn-primary" type="submit">Save Changes</button>
+                                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                            </div>
 
-                    <div id="searchedLectures"></div>
-
+</form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                    <button id="saveChangesLecture" class="btn btn-primary" type="submit">Save Changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    
 
 
-            <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Edit Page</h4>
-                        </div>
-                        <div class="modal-body">
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Page</h4>
+                </div>
+                <div class="modal-body">
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex flex-column align-items-center text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                        <div class="mt-3">
-
-                                            <h6>Student</h6>
-                                            <h6>
-                                                @foreach (KeyValuePair<int, string> i in Model.faculty)
-                                                {
-                                                    @i.Value;
-                                                    <i class="fas fa-trash" onClick="deleteFaculty(@i.Key, this)"></i>
-                                                    <br />
-                                                }
-
-                                            </h6>
-                                            <h6>
-                                                @foreach (KeyValuePair<int, string> i in Model.department)
-                                                {
-                                                    @i.Value;
-                                                    <i class="fas fa-trash" onClick="deleteDepartment(@i.Key, this)"></i>
-                                                    <br />
-                                                }
-                                            </h6>
-
-                                        </div>
-                                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h6>Club</h6>
                                 </div>
                             </div>
-                            <br />
-                            <h6>Add New Informations</h6>
-                            <form class="row g-3">
-                                <div class="form-group row mb-2">
-                                    <label for="name" class="col-sm-4 col-form-label">Name</label>
-                                    <div class="col-sm-8 text-secondary">
-                                        <input id="changeName" class="form-control" type="text" value="@Model.stud_name" required>
-                                        <div class="valid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-2">
-                                    <label for="name" class="col-sm-4 col-form-label">Faculty</label>
-                                    <div class="col-sm-8 text-secondary">
-                                        <input onkeyup="SearchFaculties()" id="searchFaculties" type="text" class="form-control" placeholder="Search">
-                                        <div id="searchedFaculties"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-2">
-                                    <label for="name" class="col-sm-4 col-form-label">Department</label>
-                                    <div class="col-sm-8 text-secondary">
-                                        <input onkeyup="SearchDepartments()" id="searchDepartments" type="text" class="form-control" placeholder="Search">
-                                        <div id="searchedDepartments"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label for="name" class="col-sm-4 col-form-label">Gender</label>
-                                    <div class="col-sm-8 text-secondary">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Male
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                Female
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                            <label class="form-check-label" for="exampleRadios2">
-                                                Does not matter
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button id="saveChanges" class="btn btn-primary" type="submit">Save Changes</button> 
-                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </form>
                         </div>
-                        <div class="modal-footer">
-                            
-
-                            <!--<button data-bs-dismiss="modal" >Html.RouteLink("Save Changes", new { action = "Index", controller = "Profile" }, new { class = "btn btn-primary", id = "saveChanges", type= "submit" })</button>-->
+                    </div>
+                    <br />
+                    <h6>Add New Informations</h6>
+                    <form class="row">
+                        <div class="form-group row mb-2">
+                            <label for="name" class="col-sm-4 col-form-label">Name</label>
+                            <div class="col-sm-8 text-secondary">
+                                <input id="changeName" class="form-control" type="text" value="@Model.name" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+
+                        <div class="col-12">
+                            <button id="saveChanges" class="btn btn-primary" type="submit">Save Changes</button>
+                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
-            <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -58,7 +58,7 @@ namespace UniFriend.Controllers {
             List<Student> students = new List<Student>();
 
             foreach(int studentID in Data.CRNs[CRNID].students) {
-                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID))
+                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID) && ((int)Session["ID"] != studentID))
                 {
                     students.Add(Data.students[studentID]);
                 }
@@ -72,7 +72,7 @@ namespace UniFriend.Controllers {
             List<Student> students = new List<Student>();
 
             foreach(int studentID in Data.clubs[clubID].students) {
-                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID))
+                if (!Data.students[(int)Session["ID"]].friends.Contains(studentID) && ((int)Session["ID"] != studentID))
                 {
                     students.Add(Data.students[studentID]);
                 }

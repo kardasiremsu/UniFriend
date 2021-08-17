@@ -6,20 +6,24 @@ using System.Web.Mvc;
 using UniFriend.Models;
 using UniFriend.Models.Entities;
 
-namespace UniFriend.Controllers {
-    public class HomeController : Controller {
+namespace UniFriend.Controllers
+{
+    public class HomeController : Controller
+    {
         public LayoutViewModel LayoutModel { get; set; }
 
-        public HomeController() {
+        public HomeController()
+        {
             this.LayoutModel = new LayoutViewModel();
         }
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
             int ID = (int)Session["ID"];
             List<Club> clubs = new List<Club>();
-
             //Adding clubs to dictionary
-            foreach(int clubid in Data.students[ID].club) {
+            foreach (int clubid in Data.students[ID].club)
+            {
                 clubs.Add(Data.clubs[clubid]);
             }
 
@@ -28,17 +32,27 @@ namespace UniFriend.Controllers {
 
 
             Session["LayoutModel"] = LayoutModel;
-            
+
             return View(Data.homeModel);
         }
 
-        public JsonResult ReturnFlow() {
+        public JsonResult ReturnFlow()
+        {
             return Json(Data.posts);
         }
 
-        public void AddPost(string text) {
-            Data.posts.Add(new Post { ID = Data.posts.Count, text = text, AuthorID = (int)Session["ID"], date = "1/1/2021" });
-           
+        public void AddPost(string text)
+        {
+            Data.posts.Add(new Post { ID = Data.posts.Count, text = text, AuthorID = (int)Session["ID"], date = "1/1/2021", comments = new List<Comment>(), likes = new List<int>() });
         }
+        public void AddComment(int postID, string comment)
+        {
+            Data.posts[postID].comments.Add(new Comment { ID = Data.posts[postID].comments.Count, AuthorID = (int)Session["ID"], date = DateTime.Now.ToString(), likes = new List<int>(), text = comment });
+        }
+        public void Like(int postID)
+        {
+            Data.posts[postID].likes.Add((int)Session["ID"]);
+        }
+
     }
 }

@@ -128,6 +128,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddFriendPageModel.cs" />
+    <Compile Include="Models\ClubProfileModel.cs" />
     <Compile Include="Models\Entities\Data.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\LayoutViewModel.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Views\AddFriend\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Profile\ClubProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

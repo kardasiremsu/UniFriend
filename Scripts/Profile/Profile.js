@@ -36,7 +36,7 @@
             }
         });
     });
-
+    //<i id="undo" class="fas fa-undo" style="display: none; margin:10px; padding:10px"></i>
     $.ajax({
         url: '/Profile/GetStudentLectures',
         type: 'post',
@@ -44,9 +44,9 @@
             var str = "";
             if (data.length != 0) {
                 data.forEach((lecture) => {
-                    str += '<p style="border: 1px solid black; padding: 10px">' +
+                    str += '<small><span class="border" style="margin: 10px; padding: 10px">' +
                         lecture.name +
-                        '<i class="fas fa-trash" style="margin: 10px" onClick="deleteLecture(' + lecture.ID + ', this)"></i><i id="undo" class="fas fa-undo" style="display: none;"></i></p>';
+                        '<i class="fas fa-trash" style="margin: 10px" onClick="deleteLecture(' + lecture.ID + ', this)"></i></span></small>';
                 });
 
                 $('#myLectures').html(str);
@@ -70,7 +70,15 @@ $('#saveChanges').click(function () {
     });
 });
 
+
+
+    $('#saveChangesLecture').click(function () {
+        location.reload();
+
+    });
 });
+
+
 
 function SearchDepartments() {
     var text = $('#searchDepartments').val();
@@ -218,7 +226,9 @@ function deleteLecture(lectureID, button) {
             if (data === true) {
                 button.innerHTML = "Deleted";
                 button.className = "btn btn-danger btn-sm";
+               
                 button.disabled = true;
+                
             }
         }
     });
@@ -256,3 +266,6 @@ function deleteDepartment(departmentID, button) {
         }
     });
 }
+$('.datepicker').datepicker({
+  inline: true
+});

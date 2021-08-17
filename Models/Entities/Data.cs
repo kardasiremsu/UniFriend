@@ -15,7 +15,7 @@ namespace UniFriend.Models.Entities {
         public static List<Comment> Comments = GetComments();
         public static List<Post> posts = GetPosts();
         public static HomePageModel homeModel = GetHomeModel();
-
+      
 
         public static HomePageModel GetHomeModel()
         {
@@ -33,7 +33,7 @@ namespace UniFriend.Models.Entities {
             return new List<Post>
             {
                 new Post{ID=0, AuthorID=0, text="Post1", likes= new List<int> {0,1}, date= "08/09/2021", comments = Comments},
-                new Post{ID=1, AuthorID=1, text="Post2", likes= new List<int> {2,1}, date= "08/08/2021", comments = Comments}
+                new Post{ID=1, AuthorID=1, text="Post2", likes= new List<int> {2,1}, date= "08/08/2021", comments = new List<Comment>() }
             };
         }
 

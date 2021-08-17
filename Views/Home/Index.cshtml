@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div id="eventCard"class="col">
             <div class="card sticky-top" style="top: 20px">
                 <div class="card-header">
                     <h5 class="card-title">Events</h5>
@@ -57,77 +57,82 @@
 
             @{ foreach (var i in Model.posts.AsEnumerable().Reverse())
                 {
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h5 class="card-title" style="display: inline-block">@Model.students[i.AuthorID].stud_name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                @i.text
-                            </p>
-
-                        </div>
-                        <div class="card-footer">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="commentBox" placeholder="Enter your comment" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-info position-relative" style="margin-right: 20px">
-                                        <i class="fab fa-telegram-plane"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
-                                        <i class="far fa-thumbs-up"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">@i.likes.Count</span>
-                                    </button>
-                                    <button type="button"
-                                            class="btn btn-warning position-relative"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#commentsOne"
-                                            aria-expanded="false"
-                                            aria-controls="commentsOne"
-                                            style="margin-right: 20px">
-                                        <i class="far fa-comments"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger position-relative">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                    </button>
-                                </span>
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="card-title" style="display: inline-block">@Model.students[i.AuthorID].stud_name</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
                             </div>
-                        </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    @i.text
+                                </p>
 
-                        <div class="collapse collapse-horizontal" id="commentsOne">
-                            @{ 
-                                if (i.comments != null)
-                                {
-                                    foreach (var x in i.comments)
+                            </div>
+                            @{
+                                string post = "post" + (i.ID).ToString();
+                                string commentBox = "comment" + (i.ID).ToString();
+                            }
+                        <form>
+                            <div class="card-footer">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="@commentBox" placeholder="Enter your comment" />
+                                    <span class="input-group-btn">
+                                        <button id="AddComment" type="submit" onclick=addComment(@i.ID) class="btn btn-info position-relative" style="margin-right: 20px">
+                                            <i class="fab fa-telegram-plane"></i>
+                                        </button>
+                                        <button type="submit" onclick="Like(@i.ID)" class="btn btn-success position-relative" style="margin-right: 20px">
+                                            <i class="far fa-thumbs-up"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">@i.likes.Count</span>
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-warning position-relative"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#@post"
+                                                aria-expanded="false"
+                                                aria-controls="@post"
+                                                style="margin-right: 20px">
+                                            <i class="far fa-comments"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">@i.comments.Count</span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger position-relative">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                            <div class="collapse collapse-horizontal" id="@post">
+                                @{
+                                    if (i.comments != null)
                                     {
-                                    <div class="card m-3">
-                                        <div class="card-header">
-                                            <h5 class="card-title" style="display: inline-block">@Model.students[x.AuthorID].stud_name</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">11.08.2021</h6>
-                                        </div>
-                                        <div class="card card-body">
-                                            <p>
-                                                @x.text
-                                            </p>
+                                        foreach (var x in i.comments)
+                                        {
+                                            <div class="card small m-3">
+                                                <div class="card-header">
+                                                    <h6 class="card-title" style="display: inline-block">@Model.students[x.AuthorID].stud_name</h6>
+                                                    <p class="card-subtitle mb-2 text-muted">11.08.2021</p>
+                                                </div>
+                                                <div class="card card-body">
+                                                    <p>
+                                                        @x.text
+                                                    </p>
 
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
-                                                <i class="far fa-thumbs-up"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
-                                            </button>
-                                            <button type="button" class="btn btn-danger position-relative" style="margin-right: 20px">
-                                                <i class="fas fa-exclamation-circle"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button type="button" class="btn btn-success position-relative" style="margin-right: 20px">
+                                                        <i class="far fa-thumbs-up"></i>
+                                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger position-relative" style="margin-right: 20px">
+                                                        <i class="fas fa-exclamation-circle"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         }
                                     }
                                 }
+                            </div>
                         </div>
-                    </div>
                 }
             }
         </div>

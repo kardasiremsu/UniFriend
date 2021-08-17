@@ -15,8 +15,24 @@ namespace UniFriend.Controllers {
             return View(EditModel);
         }*/
 
+        public ActionResult ClubProfile()
+        {
+            ViewData["LayoutViewModel"] = (LayoutViewModel)Session["LayoutModel"];
 
+            Club club = Data.clubs[(int)Session["ID"]];
+
+            Dictionary<int, string> friends = new Dictionary<int, string>();
+            foreach (int i in club.students)
+            {
+
+                friends.Add(i, Data.students[i].stud_name);
+            }
+            ClubProfileModel clubprofile = new ClubProfileModel { name = club.name, students = friends };
+
+            return View(clubprofile);
+        }
         public ActionResult Index() {
+
             ViewData["LayoutViewModel"] = (LayoutViewModel)Session["LayoutModel"];
 
             Student student = Data.students[(int)Session["ID"]];
